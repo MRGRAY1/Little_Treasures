@@ -118,19 +118,26 @@ public class DungeonCreator : MonoBehaviour
                     continue;
 
                 // Prevent rooms from touching others without connection
-                bool willTouchUnconnectedRoom = false;
+                bool invalidNeighbor = false;
+
                 foreach (Direction checkDir in System.Enum.GetValues(typeof(Direction)))
                 {
                     Vector2Int neighbor = GetOffset(branch, checkDir);
                     if (!IsInBounds(neighbor.x, neighbor.y))
                         continue;
+
                     if (grid[neighbor.x, neighbor.y].visited && neighbor != roomPos)
                     {
-                        willTouchUnconnectedRoom = true;
-                        break;
+                        // If the neighbor has no door facing this new branch, it's invalid
+                        if (!grid[neighbor.x, neighbor.y].status[(int)Opposite(checkDir)])
+                        {
+                            invalidNeighbor = true;
+                            break;
+                        }
                     }
                 }
-                if (willTouchUnconnectedRoom)
+
+                if (invalidNeighbor)
                     continue;
 
                 // Create the connection

@@ -11,10 +11,6 @@ public class GameManager : Singleton<GameManager>
     [Header("Base Variables")]
     [Tooltip("World Gravity")]
     public float World_Gravity = -9.81f;
-    [SerializeField]
-    private float timer = 0.0f;
-    [SerializeField]
-    private int counter = 0;
 
     static void OnEnable()
     {
@@ -51,15 +47,11 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    private void Update()
+    public static IEnumerator WaitForSeconds(float duration)
     {
-        timer += Time.deltaTime;
-        if (timer >= 5)
-        {
-            Logger.Log($"Countdown: {timer}");
-            counter++;
-            timer = 0.0f;
-        }
+        Debug.Log($"Started at {Time.time}, waiting for {duration} seconds");
+        yield return new WaitForSeconds(duration);
+        Debug.Log($"Ended at {Time.time}");
     }
 
 }

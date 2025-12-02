@@ -1,159 +1,345 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class DungeonCreator : MonoBehaviour
-{
-    public static DungeonCreator Instance;
 
+/// <summary>
+/// Dungeon Creation Class that creates the dungeon with randomly generated rooms/directions for a unique level each time
+/// </summary>
+/// TODOS:
+/// Fix ending boss room. Still doesnt spawn sometimes. 
+/// Create Spawn points for items in rooms
+/// Update for difficulty with game progression
+public class DungeonCreator : InitializeItem
+{
+
+    #region Variables
+    /// <summary>
+    /// 4 directions of a room
+    /// </summary>
     public enum Direction { North = 0, East = 1, South = 2, West = 3 }
 
+    /// <summary>
+    /// Represents a dungeon room in the grid
+    /// </summary>
     public class Cell
     {
         public bool visited;
-        public bool[] status = new bool[4]; // 0=N, 1=E, 2=S, 3=W
-        public bool isBossRoom;
+        public bool[] status = new bool[4]; // doors: 0=N,1=E,2=S,3=W
         public bool isStartRoom;
+        public bool isBossRoom;
     }
 
+    /// <summary>
+    /// set base values for random generation
+    /// </summary>
     [Header("Dungeon Settings")]
-    public Vector2Int size = new Vector2Int(9, 9);
-    public int totalRooms = 12;
-    public int mainPathLength = 6;
-    [Range(0f, 1f)] public float branchChance = 0.4f;
+    public Vector2Int size = new Vector2Int(9, 9); // grid dimensions
+    public int mainPathLength = 8;                 // how long the main path is
+    public int minTotalRooms = 1;                  // minimum number of rooms 
+    public int totalRooms = 15;                    // maximum number of rooms
+    [Range(0f, 1f)] public float branchChance = 0.5f; // chance to add branches
+    [Range(0f, 1f)] public float loopChance = 0.3f;   // chance to add loops
 
     [Header("Room Prefab & Positioning")]
     public GameObject room;
-    public Vector2 offset = new Vector2(12, 12);
+    public Vector2 offset = new Vector2(12, 12); // spacing between rooms
 
     private Cell[,] grid;
-    private int roomCount = 0;
     private Vector2Int startPos;
-    private List<Vector2Int> mainPathRooms = new();
+    public Vector3Variable playerSpawnPoint;
+    #endregion
 
-    private Transform spawnPoint;
-
-    public bool IsGenerationComplete { get; private set; }
-    private void Awake()
+    #region Initialization Functions
+    /// <summary>
+    /// Initialize the dungeon Creation
+    /// </summary>
+    public override void Initialize()
     {
-        Instance = this;  // Always update instance on load
-        IsGenerationComplete = false;
-    }
-    public void StartGenerateDungeon()
-    {
-        Logger.Log("Dungeon generation started");
-
-        // Reset before generating
-        IsGenerationComplete = false;
-        roomCount = 0;
-        mainPathRooms.Clear();
-
-        GenerateDungeon();
-        spawnPoint = transform;
+        base.Initialize();
+        StartCoroutine(GenerateDungeon());
     }
 
-    private void GenerateDungeon()
+    private IEnumerator GenerateDungeon()
     {
+        // Initialize grid
         grid = new Cell[size.x, size.y];
         for (int x = 0; x < size.x; x++)
             for (int y = 0; y < size.y; y++)
                 grid[x, y] = new Cell();
 
-        startPos = new Vector2Int(size.x / 2, size.y / 2);
+        startPos = new Vector2Int(0, 0);
+
+        // 1. Generate main path
         GenerateMainPath();
+        // 2. Generate branches
         GenerateBranches();
+        // 3. Add loops for a grid-like network
+        GenerateLoops();
+        // 4. Find and place boss room
+        FinalizeBossRoom();
+        // 5. Instantiate room prefabs into the world
         InstantiateDungeonFromGrid();
+        // 6. Send Event when dungeon is generated
+        CompleteInit();
 
-        Logger.Log($"Dungeon generated with {roomCount} rooms");
-        IsGenerationComplete = true;
+        yield return null;
     }
+    public override void CompleteInit()
+    {
+        base.CompleteInit();
+    }
+    #endregion
 
+    #region Main Functions
+    /// <summary>
+    /// Generates the main path from the start position.
+    /// </summary>
     private void GenerateMainPath()
     {
         Vector2Int current = startPos;
         grid[current.x, current.y].visited = true;
         grid[current.x, current.y].isStartRoom = true;
-        roomCount++;
-        mainPathRooms.Add(current);
 
-        for (int i = 0; i < mainPathLength - 1; i++)
+        for (int i = 1; i < mainPathLength; i++)
         {
-            List<Direction> validDirs = GetAvailableDirections(current);
-
-            if (validDirs.Count == 0)
-                break;
+            List<Direction> validDirs = PickDirection(current);
+            if (validDirs.Count == 0) break;
 
             Direction dir = validDirs[Random.Range(0, validDirs.Count)];
             Vector2Int next = GetOffset(current, dir);
 
-            grid[next.x, next.y].visited = true;
-            roomCount++;
-            mainPathRooms.Add(next);
+            if (HasExtraNeighbors(next, current)) continue;
 
+            // Connect rooms
             grid[current.x, current.y].status[(int)dir] = true;
             grid[next.x, next.y].status[(int)Opposite(dir)] = true;
 
             current = next;
+            grid[current.x, current.y].visited = true;
         }
-
-        grid[current.x, current.y].isBossRoom = true;
     }
 
-    private void GenerateBranches()
+    /// <summary>
+    /// Instantiate room prefabs for all visited cells.
+    /// </summary>
+    private void InstantiateDungeonFromGrid()
     {
-        foreach (Vector2Int roomPos in mainPathRooms)
+        for (int x = 0; x < size.x; x++)
         {
-            if (roomCount >= totalRooms)
-                return;
-
-            foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+            for (int y = 0; y < size.y; y++)
             {
-                if (Random.value > branchChance)
-                    continue;
+                if (!grid[x, y].visited) continue;
 
-                Vector2Int branch = GetOffset(roomPos, dir);
+                Vector3 position = new Vector3(x * offset.x, 0, y * offset.y);
+                GameObject newRoom = Instantiate(room, position, Quaternion.identity, transform);
 
-                if (!IsInBounds(branch.x, branch.y) || grid[branch.x, branch.y].visited)
-                    continue;
+                RoomBehavior rb = newRoom.GetComponent<RoomBehavior>();
+                rb.UpdateRoom(grid[x, y].status);
 
-                // Prevent rooms from touching others without connection
-                bool invalidNeighbor = false;
-
-                foreach (Direction checkDir in System.Enum.GetValues(typeof(Direction)))
-                {
-                    Vector2Int neighbor = GetOffset(branch, checkDir);
-                    if (!IsInBounds(neighbor.x, neighbor.y))
-                        continue;
-
-                    if (grid[neighbor.x, neighbor.y].visited && neighbor != roomPos)
-                    {
-                        // If the neighbor has no door facing this new branch, it's invalid
-                        if (!grid[neighbor.x, neighbor.y].status[(int)Opposite(checkDir)])
-                        {
-                            invalidNeighbor = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (invalidNeighbor)
-                    continue;
-
-                // Create the connection
-                grid[roomPos.x, roomPos.y].status[(int)dir] = true;
-                grid[branch.x, branch.y].status[(int)Opposite(dir)] = true;
-
-                grid[branch.x, branch.y].visited = true;
-                roomCount++;
-
-                if (roomCount >= totalRooms)
-                    return;
+                if (grid[x, y].isStartRoom) rb.SetType(RoomType.Start);
+                else if (grid[x, y].isBossRoom) rb.SetType(RoomType.Boss);
+                else rb.SetType(RoomType.Normal);
             }
         }
     }
 
-    private List<Direction> GetAvailableDirections(Vector2Int pos)
+    /// <summary>
+    /// Adds random branches from the main path
+    /// until the total room count is reached.
+    /// </summary>
+    private void GenerateBranches()
+    {
+        List<Vector2Int> visitedRooms = new();
+        for (int x = 0; x < size.x; x++)
+            for (int y = 0; y < size.y; y++)
+                if (grid[x, y].visited) visitedRooms.Add(new Vector2Int(x, y));
+
+        foreach (Vector2Int pos in visitedRooms)
+        {
+            foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+            {
+                if (GetVisitedCount() >= totalRooms) return;
+
+                // If we're under minTotalRooms, force expansion.
+                // Otherwise, rely on branchChance.
+                if (GetVisitedCount() < minTotalRooms || Random.value <= branchChance)
+                {
+                    Vector2Int branch = GetOffset(pos, dir);
+                    if (!IsInBounds(branch.x, branch.y) || grid[branch.x, branch.y].visited) continue;
+                    if (HasExtraNeighbors(branch, pos)) continue;
+
+                    grid[pos.x, pos.y].status[(int)dir] = true;
+                    grid[branch.x, branch.y].status[(int)Opposite(dir)] = true;
+                    grid[branch.x, branch.y].visited = true;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Randomly connects nearby rooms to create loops,
+    /// which prevents the dungeon from being a simple tree.
+    /// </summary>
+    private void GenerateLoops()
+    {
+        for (int x = 0; x < size.x; x++)
+        {
+            for (int y = 0; y < size.y; y++)
+            {
+                if (!grid[x, y].visited) continue;
+
+                foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+                {
+                    Vector2Int neighbor = GetOffset(new Vector2Int(x, y), dir);
+                    if (!IsInBounds(neighbor.x, neighbor.y)) continue;
+                    if (!grid[neighbor.x, neighbor.y].visited) continue;
+
+                    // Already connected?
+                    if (grid[x, y].status[(int)dir]) continue;
+
+                    // Chance to connect
+                    if (Random.value < loopChance)
+                    {
+                        grid[x, y].status[(int)dir] = true;
+                        grid[neighbor.x, neighbor.y].status[(int)Opposite(dir)] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Finds the farthest room from the start,
+    /// and ensures it becomes a dead-end boss room.
+    /// </summary>
+    private void FinalizeBossRoom()
+    {
+        // Step 1: BFS to find farthest room from start
+        Queue<Vector2Int> queue = new Queue<Vector2Int>();
+        Dictionary<Vector2Int, int> dist = new Dictionary<Vector2Int, int>();
+
+        queue.Enqueue(startPos);
+        dist[startPos] = 0;
+
+        Vector2Int farthest = startPos;
+        int maxDist = 0;
+
+        while (queue.Count > 0)
+        {
+            Vector2Int current = queue.Dequeue();
+            int currentDist = dist[current];
+
+            if (currentDist > maxDist)
+            {
+                maxDist = currentDist;
+                farthest = current;
+            }
+
+            for (int d = 0; d < 4; d++)
+            {
+                if (!grid[current.x, current.y].status[d]) continue;
+
+                Vector2Int neighbor = GetOffset(current, (Direction)d);
+                if (!IsInBounds(neighbor.x, neighbor.y)) continue;
+                if (!grid[neighbor.x, neighbor.y].visited) continue;
+
+                if (!dist.ContainsKey(neighbor))
+                {
+                    dist[neighbor] = currentDist + 1;
+                    queue.Enqueue(neighbor);
+                }
+            }
+        }
+
+        // Step 2: ensure farthest is a dead-end
+        int connections = CountConnections(farthest);
+
+        if (connections == 1)
+        {
+            // Already a dead-end
+            grid[farthest.x, farthest.y].isBossRoom = true;
+            return;
+        }
+
+        // Step 3: if possible, add a new room as a boss
+        if (GetVisitedCount() < totalRooms)
+        {
+            List<Direction> availableDirs = PickDirection(farthest);
+            if (availableDirs.Count > 0)
+            {
+                Direction dir = availableDirs[Random.Range(0, availableDirs.Count)];
+                Vector2Int newRoomPos = GetOffset(farthest, dir);
+
+                // Create connection to new boss room
+                grid[farthest.x, farthest.y].status[(int)dir] = true;
+                grid[newRoomPos.x, newRoomPos.y].status[(int)Opposite(dir)] = true;
+                grid[newRoomPos.x, newRoomPos.y].visited = true;
+
+                grid[newRoomPos.x, newRoomPos.y].isBossRoom = true;
+                return;
+            }
+        }
+
+        // Step 4: force prune to dead-end if no room can be added
+        PruneToDeadEnd(farthest);
+        grid[farthest.x, farthest.y].isBossRoom = true;
+    }
+    #endregion
+
+    #region Helper Functions
+    private int GetVisitedCount()
+    {
+        int count = 0;
+        for (int x = 0; x < size.x; x++)
+            for (int y = 0; y < size.y; y++)
+                if (grid[x, y].visited) count++;
+        return count;
+    }
+
+    private int CountConnections(Vector2Int pos)
+    {
+        int c = 0;
+        foreach (bool d in grid[pos.x, pos.y].status)
+            if (d) c++;
+        return c;
+    }
+
+    private void PruneToDeadEnd(Vector2Int pos)
+    {
+        // Keep only the first valid connection, remove others
+        bool keptOne = false;
+        for (int d = 0; d < 4; d++)
+        {
+            if (!grid[pos.x, pos.y].status[d]) continue;
+
+            if (!keptOne)
+            {
+                keptOne = true;
+                continue; // keep first connection
+            }
+
+            // remove extra connections
+            grid[pos.x, pos.y].status[d] = false;
+
+            Vector2Int neighbor = GetOffset(pos, (Direction)d);
+            if (IsInBounds(neighbor.x, neighbor.y))
+                grid[neighbor.x, neighbor.y].status[(int)Opposite((Direction)d)] = false;
+        }
+    }
+
+    private bool HasExtraNeighbors(Vector2Int cell, Vector2Int parent)
+    {
+        foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+        {
+            Vector2Int neighbor = GetOffset(cell, dir);
+            if (!IsInBounds(neighbor.x, neighbor.y)) continue;
+            if (grid[neighbor.x, neighbor.y].visited && neighbor != parent) return true;
+        }
+        return false;
+    }
+
+    private List<Direction> PickDirection(Vector2Int pos)
     {
         List<Direction> dirs = new();
         foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
@@ -177,56 +363,41 @@ public class DungeonCreator : MonoBehaviour
         };
     }
 
-    private Direction Opposite(Direction dir)
-    {
-        return (Direction)(((int)dir + 2) % 4);
-    }
+    private Direction Opposite(Direction dir) => (Direction)(((int)dir + 2) % 4);
 
-    private bool IsInBounds(int x, int y)
-    {
-        return x >= 0 && y >= 0 && x < size.x && y < size.y;
-    }
+    private bool IsInBounds(int x, int y) => x >= 0 && y >= 0 && x < size.x && y < size.y;
 
-    private void InstantiateDungeonFromGrid()
+    #endregion
+
+    #region Misc Functions
+    /// <summary>
+    /// Draw cubes in the rooms to visualize room types
+    /// </summary>
+    private void OnDrawGizmos()
     {
+        if (grid == null) return;
+
+        // Scale gizmos relative to room spacing
+        Vector3 gizmoSize = new Vector3(offset.x * 0.6f, 1, offset.y * 0.6f);
+
         for (int x = 0; x < size.x; x++)
         {
             for (int y = 0; y < size.y; y++)
             {
-                if (!grid[x, y].visited)
-                    continue;
+                if (!grid[x, y].visited) continue;
 
-                Vector3 position = new Vector3(x * offset.x, 0, y * offset.y);
-                RoomBehavior newRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<RoomBehavior>();
-
-                newRoom.UpdateRoom(grid[x, y].status);
-                newRoom.name = $"Room {x} - {y}";
+                Vector3 pos = new Vector3(x * offset.x, 1, y * offset.y);
 
                 if (grid[x, y].isStartRoom)
-                {
-                    newRoom.SetType(RoomType.Start);
-
-                    // Set the player’s spawn point from this room’s marker
-                    if (newRoom.publicSpawnPoint != null)
-                    {
-                        spawnPoint = newRoom.publicSpawnPoint.transform;
-                        if (PlayerManager.Instance != null)
-                            PlayerManager.Instance.SetSpawnPoint(spawnPoint);
-                    }
-                }
+                    Gizmos.color = Color.green;
                 else if (grid[x, y].isBossRoom)
-                {
-                    newRoom.SetType(RoomType.Boss);
-                }
+                    Gizmos.color = Color.red;
                 else
-                {
-                    newRoom.SetType(RoomType.Normal);
-                }
+                    Gizmos.color = Color.blue;
+
+                Gizmos.DrawCube(pos, gizmoSize);
             }
         }
-
-        Debug.Log($"Dungeon generated with {roomCount} rooms");
-
-        IsGenerationComplete = true;
     }
+    #endregion
 }

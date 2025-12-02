@@ -13,10 +13,15 @@ public class RoomBehavior : MonoBehaviour
     private GameObject spawnPoint;
     public GameObject publicSpawnPoint { get; private set; }
 
+    [SerializeField]
+    private RoomType room_Type;
+
     private void Awake()
     {
         if (spawnPoint != null)
         {
+            //Logger.Log($"SpawnPoint RB {spawnPoint.transform.position}");
+
             publicSpawnPoint = spawnPoint;
         }
     }
@@ -31,6 +36,6 @@ public class RoomBehavior : MonoBehaviour
 
     public void SetType(RoomType type)
     {
-        // Optional: Visuals for start/boss/normal room
+        room_Type = type;
     }
 }

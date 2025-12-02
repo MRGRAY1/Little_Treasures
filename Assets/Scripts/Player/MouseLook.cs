@@ -1,60 +1,102 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles mouse-based camera look with optional smoothing.
+/// Pitch (up/down) affects the camera, yaw (left/right) affects the player body.
+/// </summary>
 public class MouseLook : MonoBehaviour
 {
+    [Header("Sensitivity")]
+    [SerializeField, Tooltip("Mouse X sensitivity (yaw)")] private float xSensitivity = 1.5f;
+    [SerializeField, Tooltip("Mouse Y sensitivity (pitch)")] private float ySensitivity = 1.5f;
 
-    #region Variables
-    [SerializeField, Tooltip("Mouse X Sensitivity")]
-    private float x_mouse_Sensitivity = 1.5f;
-    [SerializeField, Tooltip("Mouse Y Sensitivity")]
-    private float y_mouse_Sensitivity = 1.5f;
-    [SerializeField, Tooltip("Camera Object")]
-    private Transform camera_Transform;
-    [SerializeField, Tooltip("XY Rotation")]
-    private Vector2 XY_Rotation;
-    [SerializeField, Tooltip("Camera Smoothing Speed")]
-    private float smooth_Speed = 10f;
+    [Header("References")]
+    [SerializeField, Tooltip("Transform of the camera for pitch rotation")] private Transform cameraTransform;
 
-    private PlayerInputs player_Inputs;
-    private Vector2 mouse_Delta;
-    private Vector2 smooth_Delta;
-    private float pitch = 0f;
+    [Header("Smoothing")]
+    [SerializeField, Tooltip("Enable smooth camera movement")] private bool enableSmoothing = true;
+    [SerializeField, Tooltip("Speed at which smoothing interpolates towards target rotation. Higher = snappier")] private float smoothSpeed = 10f;
 
-    #endregion
+    // Input system
+    private PlayerInputs playerInputs;
 
+    // Raw mouse delta from input
+    private Vector2 mouseDelta;
+
+    // Target rotation values based on input
+    private Vector2 targetRotation;
+
+    // Smoothed rotation applied to camera/player
+    private Vector2 currentRotation;
+
+    /// <summary>
+    /// Initialize input callbacks
+    /// </summary>
     private void Awake()
     {
-        this.player_Inputs = new PlayerInputs();
+        playerInputs = new PlayerInputs();
 
+        // Update mouse delta when Look input is performed
+        playerInputs.Main.Look.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
+
+        // Reset mouse delta to zero when input stops
+        playerInputs.Main.Look.canceled += _ => mouseDelta = Vector2.zero;
     }
+
+    /// <summary>
+    /// Enable input and lock/hide the cursor
+    /// </summary>
     private void OnEnable()
     {
-        this.player_Inputs.Enable();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        playerInputs.Enable();
+        Cursor.lockState = CursorLockMode.Locked; // Lock cursor to center
+        Cursor.visible = false;                    // Hide cursor for FPS feel
     }
+
+    /// <summary>
+    /// Disable input when object is disabled
+    /// </summary>
     private void OnDisable()
     {
-        this.player_Inputs.Disable();
+        playerInputs.Disable();
     }
 
-
-    //Update is called once per frame
+    /// <summary>
+    /// Called every frame after Update, applies mouse look
+    /// </summary>
     private void LateUpdate()
     {
-        this.mouse_Delta = this.player_Inputs.Main.Look.ReadValue<Vector2>();
-        this.XY_Rotation.x -= this.mouse_Delta.y * this.y_mouse_Sensitivity;
-        this.XY_Rotation.y += this.mouse_Delta.x * this.x_mouse_Sensitivity;
+        // ---------------------------
+        // 1. Update target rotation based on mouse input
+        // ---------------------------
+        targetRotation.x -= mouseDelta.y * ySensitivity; // Pitch (up/down)
+        targetRotation.y += mouseDelta.x * xSensitivity; // Yaw (left/right)
 
-        this.XY_Rotation.x = Mathf.Clamp(this.XY_Rotation.x, -90f, 90f);
+        // Clamp vertical rotation to prevent flipping
+        targetRotation.x = Mathf.Clamp(targetRotation.x, -90f, 90f);
 
-        // Rotate player left/right (yaw)
-        this.camera_Transform.localEulerAngles = new Vector3(this.XY_Rotation.x, 0f, 0f);
-        // Rotate camera up/down (pitch)
-        this.transform.eulerAngles = new Vector3(0f, this.XY_Rotation.y, 0f);
+        // ---------------------------
+        // 2. Smooth rotation if enabled
+        // ---------------------------
+        if (enableSmoothing)
+        {
+            // Interpolate current rotation towards target
+            currentRotation = Vector2.Lerp(currentRotation, targetRotation, smoothSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // No smoothing, apply target directly
+            currentRotation = targetRotation;
+        }
+
+        // ---------------------------
+        // 3. Apply rotations
+        // ---------------------------
+        // Pitch (X axis) only affects camera
+        cameraTransform.localRotation = Quaternion.Euler(currentRotation.x, 0f, 0f);
+
+        // Yaw (Y axis) only affects player body
+        transform.rotation = Quaternion.Euler(0f, currentRotation.y, 0f);
     }
 }

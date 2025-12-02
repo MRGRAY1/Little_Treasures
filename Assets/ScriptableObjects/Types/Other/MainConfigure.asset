@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c91dbd3792abb64a9afc7ca8bb69996, type: 3}
+  m_Name: MainConfigure
+  m_EditorClassIdentifier: 
+  IsDugeonGenerated: {fileID: 11400000, guid: aa0870f3f7dcf6745bc4b9587f5d3bea, type: 2}
+  IsPlayerSpawned: {fileID: 11400000, guid: 09a166df842c88940b77fc218cb75c9d, type: 2}

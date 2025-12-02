@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
     public event Action onMouseClicked;
     public event Action onMouseReleased;
 
+    public event Action OnNreleased;
+
 
     private void Awake()
     {
@@ -53,6 +55,7 @@ public class InputManager : MonoBehaviour
         this.player_Inputs.Main.MouseClick.performed += ctx => onMouseClicked?.Invoke();
         this.player_Inputs.Main.MouseClick.canceled += ctx => onMouseReleased?.Invoke();
 
+        this.player_Inputs.Main.N.performed += ctx => OnNreleased?.Invoke();
     }
 
     private void OnEnable()

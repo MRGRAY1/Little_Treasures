@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : MonoBehaviour
 {
     public AudioSource musicSource;
     public AudioSource sfxSource;
@@ -20,6 +20,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlaySFX(AudioClip clip)
     {
+        Logger.Log($"{clip.ToString()}");
         sfxSource.PlayOneShot(clip);
     }
 }

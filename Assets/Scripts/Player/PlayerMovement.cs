@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float player_Speed = 5.0f;
     private Vector3 move_Direction = Vector3.zero;
     private Rigidbody Rigidbody;
+    [SerializeField]
     private InputManager inputManager;
     private Vector2 input;
 
@@ -118,7 +119,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        this.inputManager = FindObjectOfType<InputManager>();
+        Logger.Log("Enabled");
+        this.inputManager = FindFirstObjectByType<InputManager>();
         this.inputManager.OnMovePerformed += HandleMove;
         this.inputManager.OnMoveCanceled += StopMove;
         this.inputManager.OnJumpPressed += HandleJump;
@@ -174,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        this.inputManager = FindObjectOfType<InputManager>();
+        this.inputManager = FindFirstObjectByType<InputManager>();
         if (this.inputManager == null) return;
 
         this.inputManager.OnMovePerformed -= HandleMove;
@@ -291,11 +293,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(this.input.x, 0.0f, this.input.y).normalized;
 
         Vector3 targetVelocity = this.transform.TransformDirection(move) * current_Speed;
-        Vector3 velocity = this.Rigidbody.velocity;
+        Vector3 velocity = this.Rigidbody.linearVelocity;
         velocity.x = targetVelocity.x;
         velocity.z = targetVelocity.z;
 
-        this.Rigidbody.velocity = velocity;
+        this.Rigidbody.linearVelocity = velocity;
     }
     #endregion
 

@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "Name": "Bronze Coin",
+      "ID": 1001,
+      "Description": "Bronze Coin worth 1 piece",
+      "Value": 1
+    },
+    {
+      "Name": "Gold Coin",
+      "ID": 1002,
+      "Description": "Gold Coin worth 10 piece",
+      "Value": 10
+    },
+    {
+      "Name": "Potion",
+      "ID": 1003,
+      "Description": "Restores health",
+      "Value": 0
+    },
+    {
+      "Name": "Silver Coin",
+      "ID": 1004,
+      "Description": "Bronze Coin worth 5 piece",
+      "Value": 5
+    },
+    {
+      "Name": "Sword",
+      "ID": 1005,
+      "Description": "A sharp Sword",
+      "Value": 0
+    },
+    {
+      "Name": "Test",
+      "ID": 100,
+      "Description": "Testing Again",
+      "Value": 0
+    }
+  ]
+}

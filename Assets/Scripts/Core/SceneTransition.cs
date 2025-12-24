@@ -17,7 +17,7 @@ public class SceneTransition : MonoBehaviour
     public void LoadNextScene()
     {
         Logger.Log("Load Next Scene");
-        SetCanvasState(true);
+        //SetCanvasState(true);
         EventBus.Publish(sceneTransitionStart);
     }
 

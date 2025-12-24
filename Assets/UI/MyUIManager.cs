@@ -3,8 +3,6 @@ using UnityEngine.UIElements;
 
 public class MyUIManager : MonoBehaviour
 {
-    // Assign the UXML source asset via the Inspector if you want to instantiate the UI dynamically
-    // public VisualTreeAsset uiDocumentAsset; 
     [SerializeField]
     private UIDocument uiDocument;
 
@@ -44,7 +42,5 @@ public class MyUIManager : MonoBehaviour
     {
         Logger.Log("Play Game");
         EventBus.Publish(LoadSceneEvent);
-
-
     }
 }

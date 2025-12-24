@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1594041766632999390}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,6 @@ MonoBehaviour:
   - Ground
   - Object
   ground_Check: {fileID: 5721299873014376030}
-  ground_Distance: 0.3
   is_grounded: 0
   raycast_Dist: 0.5
   sprint_Mod_Speed: 2

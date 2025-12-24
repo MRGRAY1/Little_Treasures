@@ -1,37 +1,29 @@
-using System;
 using System.Collections.Generic;
 
 public static class EventBus
 {
-    private static Dictionary<EventIndex, Delegate> events = new Dictionary<EventIndex, Delegate>();
+    private static readonly List<GameEventListener> listeners = new();
 
-    public static void Subscribe<T>(EventIndex EventIndex, Action<T> listener)
+    public static void Register(GameEventListener listener)
     {
-        if (!events.ContainsKey(EventIndex))
-        {
-            events[EventIndex] = null;
-        }
-        events[EventIndex] = (Action<T>)events[EventIndex] + listener;
+        if (!listeners.Contains(listener))
+            listeners.Add(listener);
     }
 
-    public static void Unsubscribe<T>(EventIndex EventIndex, Action<T> listener)
+    public static void Unregister(GameEventListener listener)
     {
-        if (events.ContainsKey(EventIndex))
-        {
-            events[EventIndex] = (Action<T>)events[EventIndex] - listener;
-
-            if (events[EventIndex] == null)
-            {
-                events.Remove(EventIndex);
-            }
-        }
+        listeners.Remove(listener);
     }
 
-    public static void Publish<T>(EventIndex EventIndex, T data)
+    public static void Publish(EventIndex evt)
     {
-        if (events.ContainsKey(EventIndex))
-        {
-            ((Action<T>)events[EventIndex])?.Invoke(data);
-        }
+        for (int i = listeners.Count - 1; i >= 0; i--)
+            listeners[i].OnEnumEventRaised(evt);
+    }
+
+    public static void Publish<T>(EventIndex evt, T value)
+    {
+        for (int i = listeners.Count - 1; i >= 0; i--)
+            listeners[i].OnEnumEventRaised(evt, value);
     }
 }

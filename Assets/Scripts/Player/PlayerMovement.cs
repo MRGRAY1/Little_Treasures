@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     #region Variables
 
     [SerializeField]
@@ -43,8 +42,8 @@ public class PlayerMovement : MonoBehaviour
     private List<string> ground_Check_List;
     [SerializeField, Tooltip("Ground Check Gameobject on player")]
     private Transform ground_Check;
-    [SerializeField, Tooltip("Ground Distance")]
-    private float ground_Distance = 0.3f;
+    //[SerializeField, Tooltip("Ground Distance")]
+    //private float ground_Distance = 0.3f;
     [SerializeField]
     private bool is_grounded;
 
@@ -300,5 +299,4 @@ public class PlayerMovement : MonoBehaviour
         this.Rigidbody.linearVelocity = velocity;
     }
     #endregion
-
 }

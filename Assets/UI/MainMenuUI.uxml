@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox style="height: 397px;">
+        <ui:Label text="Main Menu" style="right: auto; left: auto; bottom: auto; -unity-text-align: middle-center; font-size: 115px; height: 243px; align-items: stretch;" />
+    </ui:GroupBox>
+    <ui:GroupBox style="height: 437px;">
+        <ui:Button text="Play Game" name="PlayGame_Btn" class="TestBtn" style="height: 173px; font-size: 70px;" />
+        <ui:Button text="Button" name="Exit_Btn" style="font-size: 70px; height: 159px;" />
+    </ui:GroupBox>
+    <ui:GroupBox style="height: 215px;" />
+</ui:UXML>

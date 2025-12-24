@@ -171,7 +171,8 @@ MonoBehaviour:
   AudioEvents: []
   Vector3Events: []
   NoPayloadEvents:
-  - Event: {fileID: 11400000, guid: abdc184b2c9188b4891b0ff0668d6b21, type: 2}
+  - ScriptableEvent: {fileID: 0}
+    EnumEvent: 0
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -187,7 +188,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - Event: {fileID: 11400000, guid: c010a423c0b4f6642b9eee5e20e7a482, type: 2}
+  - ScriptableEvent: {fileID: 0}
+    EnumEvent: 0
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -203,7 +205,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - Event: {fileID: 11400000, guid: 2009cab0050d8024eb668f84e52c8696, type: 2}
+  - ScriptableEvent: {fileID: 0}
+    EnumEvent: 0
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -433,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanavasController: {fileID: 0}
-  sceneTransitionStart: {fileID: 0}
+  sceneTransitionStart: 0
 --- !u!1 &7757082970959332762
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +451,8 @@ GameObject:
   - component: {fileID: 4157144944688766394}
   - component: {fileID: 6834284158487501277}
   - component: {fileID: 1916819792260565471}
+  - component: {fileID: 7395792451554383024}
+  - component: {fileID: 3947421824900987013}
   m_Layer: 5
   m_Name: Loading Canvas
   m_TagString: Untagged
@@ -574,8 +579,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackScreenAnimator: {fileID: 6834284158487501277}
   AnimationBoolName: {fileID: 11400000, guid: 7b09b9177246f8545af9fe9498cc5cd3, type: 2}
-  StartSceneChange: {fileID: 11400000, guid: 2009cab0050d8024eb668f84e52c8696, type: 2}
-  SceneReadyEvent: {fileID: 11400000, guid: 8013c8b14d8118f46a52fe5ee60def58, type: 2}
+  StartSceneChange: 0
+  SceneReadyEvent: 0
+--- !u!225 &7395792451554383024
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757082970959332762}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &3947421824900987013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757082970959332762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387817ef4f8cec84a8d4b7a082f3f1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  canvasGroup: {fileID: 7395792451554383024}
 --- !u!1 &8889730435740265810
 GameObject:
   m_ObjectHideFlags: 0

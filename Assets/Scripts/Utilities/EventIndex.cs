@@ -8,6 +8,21 @@ using UnityEngine;
 public enum EventIndex
 {
     None,
-    SquareClicked,
-    SquareClickedInt,
+    DungeonGenerationComplete,
+    GenerationsComplete,
+    NextSceneConfigurations,
+    PlayerSpawnComplete,
+    ReloadScene,
+    RoomGenerationStart,
+    RoomReadyToPlay,
+    SceneTransitionEnd,
+    SceneTransitionStart,
+    StartFadeIn,
+    StartFadeOut,
+    StartSceneChange,
+    LoadScene,
+    ExitGame,
+    PickUpCoin,
+    PickUpItem,
+    UseCoin,
 }

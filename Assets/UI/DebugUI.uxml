@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="TL" style="flex-grow: 1; align-items: flex-start; justify-content: flex-start; flex-direction: row; align-self: auto; width: 960px; align-content: auto; position: absolute; height: 540px; top: 0; left: 0; right: auto; bottom: auto;">
+        <ui:Label text="Coins: " name="Label" style="width: 215px; font-size: 70px; left: 130px; top: 60px;" />
+        <ui:Label text="####" name="Coins_lbl" style="font-size: 70px; top: 60px; left: 130px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="TR" style="flex-grow: 1; align-items: auto; justify-content: center; flex-direction: column; align-self: auto; width: 960px; align-content: auto; position: absolute; height: 540px; top: 0; left: auto; right: 0; bottom: auto;" />
+    <ui:VisualElement name="BL" style="flex-grow: 1; align-items: auto; justify-content: center; flex-direction: column; align-self: auto; width: 960px; align-content: auto; position: absolute; height: 540px; top: auto; left: 0; right: auto; bottom: 0;" />
+    <ui:VisualElement name="BR" style="flex-grow: 1; align-items: auto; justify-content: center; flex-direction: column; align-self: auto; width: 960px; align-content: auto; position: absolute; height: 540px; top: auto; left: auto; right: 0; bottom: 0;" />
+</ui:UXML>

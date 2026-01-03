@@ -45,6 +45,7 @@ public class DungeonCreator : InitializeItem
     public Vector2 offset = new Vector2(12, 12); // spacing between rooms
 
     private Cell[,] grid;
+    public List<GameObject> rooms;
     private Vector2Int startPos;
     public Vector3Variable playerSpawnPoint;
     #endregion
@@ -66,6 +67,7 @@ public class DungeonCreator : InitializeItem
         for (int x = 0; x < size.x; x++)
             for (int y = 0; y < size.y; y++)
                 grid[x, y] = new Cell();
+        rooms = new List<GameObject>();
 
         startPos = new Vector2Int(0, 0);
 
@@ -124,6 +126,7 @@ public class DungeonCreator : InitializeItem
     /// </summary>
     private void InstantiateDungeonFromGrid()
     {
+        rooms.Clear();
         for (int x = 0; x < size.x; x++)
         {
             for (int y = 0; y < size.y; y++)
@@ -133,6 +136,7 @@ public class DungeonCreator : InitializeItem
                 Vector3 position = new Vector3(x * offset.x, 0, y * offset.y);
                 GameObject newRoom = Instantiate(room, position, Quaternion.identity, transform);
 
+                rooms.Add(newRoom);
                 RoomBehavior rb = newRoom.GetComponent<RoomBehavior>();
                 rb.UpdateRoom(grid[x, y].status);
 
@@ -385,7 +389,7 @@ public class DungeonCreator : InitializeItem
             {
                 if (!grid[x, y].visited) continue;
 
-                Vector3 pos = new Vector3(x * offset.x, 1, y * offset.y);
+                Vector3 pos = new Vector3(x * offset.x, 0.25f, y * offset.y);
 
                 if (grid[x, y].isStartRoom)
                     Gizmos.color = Color.green;

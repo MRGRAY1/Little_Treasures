@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableDebug: 0
-  player_Speed: 5
+  player_Speed: 3
   inputManager: {fileID: 0}
   player_ID: 0
   player_Name: 

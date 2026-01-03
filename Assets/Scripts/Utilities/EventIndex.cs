@@ -25,4 +25,6 @@ public enum EventIndex
     PickUpCoin,
     PickUpItem,
     UseCoin,
+    ItemsSpawnStart,
+    ItemsSpawnComplete,
 }

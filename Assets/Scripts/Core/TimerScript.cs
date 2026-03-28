@@ -1,21 +1,39 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 
 public class TimerScript : MonoBehaviour
 {
-    public EventIndex GameEvent;
     public float Timer;
 
-    public void DoWait()
+    private void OnEnable()
     {
-        Logger.LogWarning("Starting Timer");
-        Invoke(nameof(WaitForTimer), Timer); // runs once after 10 seconds
+        GameEvents.StartTimer += DoWait;
     }
 
-    void WaitForTimer()
+    private void OnDisable()
     {
-        Logger.LogWarning($"{Timer} seconds passed!");
-        EventBus.Publish(GameEvent);
+        GameEvents.StartTimer -= DoWait;
     }
+
+    private void DoWait(object sender, TimerType type, float timeToWait)
+    {
+        Logger.LogWarning("Starting Timer");
+        StartCoroutine(WaitCoroutine(type, timeToWait));
+    }
+
+    private IEnumerator WaitCoroutine(TimerType type, float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+
+        Logger.LogWarning($"{timeToWait} seconds passed!");
+        GameEvents.TimerElapsed?.Invoke(this, type);
+    }
+}
+
+public enum TimerType
+{
+    GenerationsComplete,
+    GenerationsStart,
 }

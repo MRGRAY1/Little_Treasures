@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-
-    [Header("Generation Steps")]
-    [SerializeField]
+    [Header("Generation Steps")] [SerializeField]
     private List<BoolVariable> GenSteps = new List<BoolVariable>();
 
-    [Header("Generation Complete Event")]
-    [SerializeField]
-    private EventIndex FinishedGeneration;
+    private void OnEnable()
+    {
+        GameEvents.DungeonGenerationComplete += CheckStates;
+        GameEvents.PlayerSpawnComplete += CheckStates;
+        GameEvents.ItemsSpawnComplete += CheckStates;
+    }
 
+    private void OnDisable()
+    {
+        GameEvents.DungeonGenerationComplete -= CheckStates;
+        GameEvents.PlayerSpawnComplete -= CheckStates;
+        GameEvents.ItemsSpawnComplete -= CheckStates;
+    }
 
-    public void CheckStates()
+    public void CheckStates(object sender)
     {
         foreach (var step in GenSteps)
         {
             if (!step.getValue())
                 return;
         }
-        EventBus.Publish(FinishedGeneration);
 
+        GameEvents.GenerationsComplete?.Invoke(this, false);
         ResetValues();
     }
+
 
     private void ResetValues()
     {

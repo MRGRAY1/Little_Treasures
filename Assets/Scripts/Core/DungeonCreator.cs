@@ -9,14 +9,20 @@ using UnityEngine;
 /// Fix ending boss room. Still doesnt spawn sometimes. 
 /// Create Spawn points for items in rooms
 /// Update for difficulty with game progression
-public class DungeonCreator : InitializeItem
+public class DungeonCreator : MonoBehaviour
 {
-
     #region Variables
+
     /// <summary>
     /// 4 directions of a room
     /// </summary>
-    public enum Direction { North = 0, East = 1, South = 2, West = 3 }
+    public enum Direction
+    {
+        North = 0,
+        East = 1,
+        South = 2,
+        West = 3
+    }
 
     /// <summary>
     /// Represents a dungeon room in the grid
@@ -32,41 +38,56 @@ public class DungeonCreator : InitializeItem
     /// <summary>
     /// set base values for random generation
     /// </summary>
-    [Header("Dungeon Settings")]
-    public Vector2Int size = new Vector2Int(9, 9); // grid dimensions
-    public int mainPathLength = 8;                 // how long the main path is
-    public int minTotalRooms = 1;                  // minimum number of rooms 
-    public int totalRooms = 15;                    // maximum number of rooms
-    [Range(0f, 1f)] public float branchChance = 0.5f; // chance to add branches
-    [Range(0f, 1f)] public float loopChance = 0.3f;   // chance to add loops
+    [Header("Dungeon Settings")] public Vector2Int size = new Vector2Int(9, 9); // grid dimensions
 
-    [Header("Room Prefab & Positioning")]
-    public GameObject room;
+    public int mainPathLength = 8; // how long the main path is
+    public int minTotalRooms = 1; // minimum number of rooms 
+    public int totalRooms = 15; // maximum number of rooms
+    [Range(0f, 1f)] public float branchChance = 0.5f; // chance to add branches
+    [Range(0f, 1f)] public float loopChance = 0.3f; // chance to add loops
+
+    [Header("Room Prefab & Positioning")] public GameObject room;
     public Vector2 offset = new Vector2(12, 12); // spacing between rooms
 
     private Cell[,] grid;
     public List<GameObject> rooms;
     private Vector2Int startPos;
     public Vector3Variable playerSpawnPoint;
+
+    private int visitedCount = 0;
+
+    public BoolVariable CompleteCheck;
+
     #endregion
 
     #region Initialization Functions
+
+    private void OnEnable()
+    {
+        GameEvents.RoomGenerationStart += Initialize;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.RoomGenerationStart -= Initialize;
+    }
+
     /// <summary>
     /// Initialize the dungeon Creation
     /// </summary>
-    public override void Initialize()
+    public void Initialize(object sender)
     {
-        base.Initialize();
-        StartCoroutine(GenerateDungeon());
+        GenerateDungeon();
     }
 
-    private IEnumerator GenerateDungeon()
+    private void GenerateDungeon()
     {
         // Initialize grid
+        visitedCount = 0; // reset before generation
         grid = new Cell[size.x, size.y];
         for (int x = 0; x < size.x; x++)
-            for (int y = 0; y < size.y; y++)
-                grid[x, y] = new Cell();
+        for (int y = 0; y < size.y; y++)
+            grid[x, y] = new Cell();
         rooms = new List<GameObject>();
 
         startPos = new Vector2Int(0, 0);
@@ -83,23 +104,25 @@ public class DungeonCreator : InitializeItem
         InstantiateDungeonFromGrid();
         // 6. Send Event when dungeon is generated
         CompleteInit();
+    }
 
-        yield return null;
-    }
-    public override void CompleteInit()
+    public void CompleteInit()
     {
-        base.CompleteInit();
+        CompleteCheck.setValue(true);
+        GameEvents.DungeonGenerationComplete?.Invoke(this);
     }
+
     #endregion
 
     #region Main Functions
+
     /// <summary>
     /// Generates the main path from the start position.
     /// </summary>
     private void GenerateMainPath()
     {
         Vector2Int current = startPos;
-        grid[current.x, current.y].visited = true;
+        MarkVisited(current.x, current.y);
         grid[current.x, current.y].isStartRoom = true;
 
         for (int i = 1; i < mainPathLength; i++)
@@ -117,7 +140,7 @@ public class DungeonCreator : InitializeItem
             grid[next.x, next.y].status[(int)Opposite(dir)] = true;
 
             current = next;
-            grid[current.x, current.y].visited = true;
+            MarkVisited(current.x, current.y);
         }
     }
 
@@ -155,18 +178,19 @@ public class DungeonCreator : InitializeItem
     {
         List<Vector2Int> visitedRooms = new();
         for (int x = 0; x < size.x; x++)
-            for (int y = 0; y < size.y; y++)
-                if (grid[x, y].visited) visitedRooms.Add(new Vector2Int(x, y));
+        for (int y = 0; y < size.y; y++)
+            if (grid[x, y].visited)
+                visitedRooms.Add(new Vector2Int(x, y));
 
         foreach (Vector2Int pos in visitedRooms)
         {
             foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
             {
-                if (GetVisitedCount() >= totalRooms) return;
+                if (visitedCount >= totalRooms) return;
 
                 // If we're under minTotalRooms, force expansion.
                 // Otherwise, rely on branchChance.
-                if (GetVisitedCount() < minTotalRooms || Random.value <= branchChance)
+                if (visitedCount < minTotalRooms || Random.value <= branchChance)
                 {
                     Vector2Int branch = GetOffset(pos, dir);
                     if (!IsInBounds(branch.x, branch.y) || grid[branch.x, branch.y].visited) continue;
@@ -266,7 +290,7 @@ public class DungeonCreator : InitializeItem
         }
 
         // Step 3: if possible, add a new room as a boss
-        if (GetVisitedCount() < totalRooms)
+        if (visitedCount < totalRooms)
         {
             List<Direction> availableDirs = PickDirection(farthest);
             if (availableDirs.Count > 0)
@@ -288,23 +312,24 @@ public class DungeonCreator : InitializeItem
         PruneToDeadEnd(farthest);
         grid[farthest.x, farthest.y].isBossRoom = true;
     }
+
     #endregion
 
     #region Helper Functions
-    private int GetVisitedCount()
+
+    private void MarkVisited(int x, int y)
     {
-        int count = 0;
-        for (int x = 0; x < size.x; x++)
-            for (int y = 0; y < size.y; y++)
-                if (grid[x, y].visited) count++;
-        return count;
+        if (grid[x, y].visited) return; // don't double count
+        grid[x, y].visited = true;
+        visitedCount++;
     }
 
     private int CountConnections(Vector2Int pos)
     {
         int c = 0;
         foreach (bool d in grid[pos.x, pos.y].status)
-            if (d) c++;
+            if (d)
+                c++;
         return c;
     }
 
@@ -339,6 +364,7 @@ public class DungeonCreator : InitializeItem
             if (!IsInBounds(neighbor.x, neighbor.y)) continue;
             if (grid[neighbor.x, neighbor.y].visited && neighbor != parent) return true;
         }
+
         return false;
     }
 
@@ -351,6 +377,7 @@ public class DungeonCreator : InitializeItem
             if (IsInBounds(next.x, next.y) && !grid[next.x, next.y].visited)
                 dirs.Add(dir);
         }
+
         return dirs;
     }
 
@@ -373,6 +400,7 @@ public class DungeonCreator : InitializeItem
     #endregion
 
     #region Misc Functions
+
     /// <summary>
     /// Draw cubes in the rooms to visualize room types
     /// </summary>
@@ -402,5 +430,6 @@ public class DungeonCreator : InitializeItem
             }
         }
     }
+
     #endregion
 }

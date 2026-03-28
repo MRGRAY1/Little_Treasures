@@ -9,26 +9,39 @@ using UnityEngine;
 /// - Add weighted loot tables
 /// - Scale spawn counts with difficulty
 /// - Support room-specific item rules
-public class ItemSpawner : InitializeItem
+public class ItemSpawner : MonoBehaviour
 {
     #region Variables
-    [Header("Item Settings")]
-    [SerializeField] private ItemsToSpawn itemsToSpawn;
+
+    [Header("Item Settings")] [SerializeField]
+    private ItemsToSpawn itemsToSpawn;
+
     [SerializeField] private IntVariable maxItemSpawnAmount;
 
-    [Header("Dungeon References")]
-    [SerializeField] private DungeonCreator dungeonCreator;
+    [Header("Dungeon References")] [SerializeField]
+    private DungeonCreator dungeonCreator;
+
+    public BoolVariable CompleteCheck;
+
     #endregion
 
     #region Initialization Functions
 
+    private void OnEnable()
+    {
+        GameEvents.DungeonGenerationComplete += Initialize;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.DungeonGenerationComplete -= Initialize;
+    }
+
     /// <summary>
     /// Initialize the item spawning process
     /// </summary>
-    public override void Initialize()
+    public void Initialize(object sender)
     {
-        base.Initialize();
-
         if (itemsToSpawn == null || dungeonCreator == null)
         {
             Debug.LogError("ItemSpawner missing required references");
@@ -47,10 +60,13 @@ public class ItemSpawner : InitializeItem
     /// </summary>
     private void SpawnItems()
     {
+        GameEvents.ItemsSpawnStart?.Invoke(this);
         foreach (GameObject room in dungeonCreator.rooms)
         {
             SpawnItemsInRoom(room);
         }
+
+        CompleteInit();
     }
 
     /// <summary>
@@ -99,9 +115,13 @@ public class ItemSpawner : InitializeItem
                 itemParent
             );
         }
-
     }
 
+    public void CompleteInit()
+    {
+        CompleteCheck.setValue(true);
+        GameEvents.ItemsSpawnComplete?.Invoke(this);
+    }
 
     #endregion
 

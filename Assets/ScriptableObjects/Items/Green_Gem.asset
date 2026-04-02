@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3375ac4cef09d0446898e4ca03a2fb44, type: 3}
-  m_Name: 1001_Bronze Coin
-  m_EditorClassIdentifier: 
-  Name: Bronze Coin
-  ID: 1001
-  Description: Bronze Coin worth 1 piece
+  m_Script: {fileID: 11500000, guid: d69a0a31dad346788b532340788e99e7, type: 3}
+  m_Name: Green_Gem
+  m_EditorClassIdentifier: Assembly-CSharp::GemDataSO
+  Name: Green Gem
+  Description: Green Gem Pickup
   Renderer: {fileID: 0}
   Value: 1
+  Material: {fileID: 2100000, guid: f7fc0e75ae991704ebf3f82203ffb283, type: 2}
+  GemType: 2

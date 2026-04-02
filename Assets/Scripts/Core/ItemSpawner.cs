@@ -108,8 +108,9 @@ public class ItemSpawner : MonoBehaviour
         // Spawn items at the first N points
         for (int i = 0; i < spawnCount; i++)
         {
+            int randItem = Random.Range(0, itemsToSpawn.itemsToSpawn.Count);
             Instantiate(
-                itemsToSpawn.itemsToSpawn[0],
+                itemsToSpawn.itemsToSpawn[randItem],
                 spawnPoints[i].position,
                 Quaternion.identity,
                 itemParent

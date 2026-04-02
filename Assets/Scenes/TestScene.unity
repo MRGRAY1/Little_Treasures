@@ -171,7 +171,7 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  serializedVersion: 9
+  serializedVersion: 10
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -186,6 +186,12 @@ LightingSettings:
   m_BakeResolution: 40
   m_Padding: 2
   m_LightmapCompression: 3
+  m_LightmapPackingMode: 1
+  m_LightmapPackingMethod: 0
+  m_XAtlasPackingAttempts: 16384
+  m_XAtlasBruteForce: 0
+  m_XAtlasBlockAlign: 0
+  m_XAtlasRepackUnderutilizedLightmaps: 1
   m_AO: 0
   m_AOMaxDistance: 1
   m_CompAOExponent: 1
@@ -250,14 +256,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -302,7 +308,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -447,7 +453,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsToSpawn
   itemsToSpawn:
-  - {fileID: 4623173014787022102, guid: 00d37717c5eb9354fbfceb1692d1f18b, type: 3}
+  - {fileID: 9182956722786413585, guid: fd5afdf4c7a314944a5bc2d469066aed, type: 3}
+  - {fileID: 2329383965236536701, guid: 339c4f9f34fe3cc4088a66cd99200371, type: 3}
+  - {fileID: 2009810631087159120, guid: 05cce86d381529c4bbce00a4b8c2d816, type: 3}
+  - {fileID: 8033612588826655638, guid: 6e75a2725c8d4a7438088aac2ae31a9e, type: 3}
+  - {fileID: 8469489610195708705, guid: 9318ede77e8210a47afe542469d512ac, type: 3}
+  - {fileID: 6884351785513212745, guid: 0b21da5fc6c625048a746fdcbe10b389, type: 3}
 --- !u!1 &1071446847
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +595,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8434229822226484705, guid: 4ca2ebe5d9c3ed84c922373f73cda949, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca2ebe5d9c3ed84c922373f73cda949, type: 3}

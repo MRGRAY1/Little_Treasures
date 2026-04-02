@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7672319194111337515}
   - component: {fileID: 1594041766632999390}
   - component: {fileID: 4032850285570012550}
+  - component: {fileID: 7036062174411156428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -168,6 +169,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &4660869197406630504
 CapsuleCollider:
@@ -262,6 +264,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerInput
   player: {fileID: 5781614363067837226}
+--- !u!114 &7036062174411156428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623968174630959397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffd1c315324cc943a20e8f085e19cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  currCoinAmount: 0
+  globalCoinAmount: {fileID: 0}
 --- !u!1 &921856065985402693
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +366,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5085448729524656413
 GameObject:

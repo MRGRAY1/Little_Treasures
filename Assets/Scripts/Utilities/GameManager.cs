@@ -30,3 +30,17 @@ public enum GameScenes
     MainMenu,
     TestScene,
 }
+
+public enum GemTypes
+{
+    RedGem,
+    BlueGem,
+    GreenGem,
+}
+
+public enum CoinTypes
+{
+    CopperCoin,
+    SilverCoin,
+    GoldCoin,
+}

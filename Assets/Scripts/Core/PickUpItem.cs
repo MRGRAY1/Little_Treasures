@@ -10,12 +10,7 @@ using UnityEngine;
 // - Add specific logic or initialization here
 public abstract class PickUpItem : MonoBehaviour
 {
-    #region Variables
-
-    // Declare fields, constants, and serialized variables here.
-    [SerializeField] public ItemDataSO itemData;
-
-    #endregion
+    public MeshRenderer _meshRenderer;
 
     #region Functions
 
@@ -29,7 +24,13 @@ public abstract class PickUpItem : MonoBehaviour
         }
     }
 
+    protected virtual void Awake()
+    {
+        Initialize();
+    }
+
     protected abstract void HandlePickup(GameObject player);
+    protected abstract void Initialize();
 
     #endregion
 }

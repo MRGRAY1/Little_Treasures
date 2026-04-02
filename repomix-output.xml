@@ -57,8 +57,12 @@ Assets/Generator.prefab.meta
 Assets/items.json
 Assets/items.json.meta
 Assets/Materials.meta
+Assets/Materials/Coin_Mat.mat
+Assets/Materials/Coin_Mat.mat.meta
 Assets/Materials/Floor_Mat.mat
 Assets/Materials/Floor_Mat.mat.meta
+Assets/Materials/Player_PhysicsMaterial.physicMaterial
+Assets/Materials/Player_PhysicsMaterial.physicMaterial.meta
 Assets/Prefabs.meta
 Assets/Prefabs/Coin.prefab
 Assets/Prefabs/Coin.prefab.meta
@@ -423,6 +427,7 @@ Assets/UI/MainMenuUI.uxml
 Assets/UI/MainMenuUI.uxml.meta
 Assets/UI/MyUIManager.cs
 Assets/UI/MyUIManager.cs.meta
+Little_Treasures.slnx
 packages.config
 Packages/manifest.json
 Packages/NUnit.4.4.0/.signature.p7s
@@ -582,279 +587,109 @@ UIElementsSchema/UnityEngine.UIElements.xsd
 <files>
 This section contains the contents of the repository's files.
 
-<file path="Assets/Scripts/Core/UnityClassTemplate.cs">
-using UnityEngine;
-
-/// <summary>
-/// Summary Of File
-/// </summary>
-
-// ToDo:
-// - Add specific logic or initialization here
-public class UnityClassTemplate : MonoBehaviour
-{
-    #region Variables
-    // Declare fields, constants, and serialized variables here.
-    [Header("References")]
-    [SerializeField] private GameObject exampleObject;
-    #endregion
-
-    #region Functions
-    // Called before Start().
-    // Initialize references and set up components.
-    private void Awake()
-    {
-    
-    }
-
-    // Called before the first frame update.
-    // Run startup logic that depends on other objects being initialized.
-    private void Start()
-    {
-        
-    }
-
-    // Called each time the object becomes enabled and active.
-    // Subscribe to events or reset state here.
-    private void OnEnable()
-    {
-        
-    }
-
-    // Called when the object is disabled or destroyed.
-    // Unsubscribe from events or clean up.
-    private void OnDisable()
-    {
-        
-    }
-
-    // Called once per frame.
-    // Handle per-frame logic such as input or movement.
-    private void Update()
-    {
-        
-    }
-    #endregion
-}
+<file path="Assets/Materials/Coin_Mat.mat">
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Coin_Mat
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 </file>
 
-<file path="Assets/Scripts/Core/UnityClassTemplate.cs.meta">
+<file path="Assets/Materials/Coin_Mat.mat.meta">
 fileFormatVersion: 2
-guid: 2c95e0ca89228b842abb27a4b9c10e08
-</file>
-
-<file path="Assets/Scripts/Player/PlayerInput.cs">
-using UnityEngine;
-
-namespace Player
-{
-    public class PlayerInput : MonoBehaviour
-    {
-        [SerializeField] private PlayerInputs playerInputs;
-
-        [SerializeField] private PlayerManager player;
-
-        // Raw mouse delta from input
-        private Vector2 mouseDelta;
-
-        public void Initialize()
-        {
-            playerInputs = new PlayerInputs();
-            player = GetComponent<PlayerManager>();
-
-            playerInputs.Enable();
-
-            playerInputs.Main.Movement.performed += ctx => player.OnMovePerformed?.Invoke(ctx.ReadValue<Vector2>());
-            playerInputs.Main.Movement.canceled += ctx => player.OnMoveCanceled?.Invoke();
-
-            playerInputs.Main.Jump.performed += ctx => player.OnJumpPressed?.Invoke();
-            playerInputs.Main.Crouch.performed += ctx => player.OnCrouchPressed?.Invoke();
-            playerInputs.Main.Crouch.canceled += ctx => player.OnCrouchReleased?.Invoke();
-            playerInputs.Main.Sprint.performed += ctx => player.OnSprintPressed?.Invoke();
-            playerInputs.Main.Sprint.canceled += ctx => player.OnSprintReleased?.Invoke();
-            playerInputs.Main.MouseClick.performed += ctx => player.onMouseClicked?.Invoke();
-            playerInputs.Main.MouseClick.canceled += ctx => player.onMouseReleased?.Invoke();
-            playerInputs.Main.N.performed += ctx => GameEvents.OnNreleased?.Invoke();
-
-            playerInputs.Main.Look.performed += ctx => player.OnLookPerformed?.Invoke(ctx.ReadValue<Vector2>());
-            playerInputs.Main.Look.canceled += _ => player.OnLookCanceled?.Invoke();
-        }
-    }
-}
-</file>
-
-<file path="Assets/Scripts/Player/PlayerInput.cs.meta">
-fileFormatVersion: 2
-guid: f5b827490570428caa876ce8da3106c3
-timeCreated: 1774727951
-</file>
-
-<file path="Assets/Scripts/Player/PlayerManager.cs">
-using System;
-using Player;
-using UnityEngine;
-
-public class PlayerManager : MonoBehaviour
-{
-    [Header("Components")] [SerializeField]
-    private PlayerMovement movement;
-
-    [SerializeField] private PlayerInput input;
-
-    [SerializeField] private MouseLook mouseLook;
-    //[SerializeField] private PlayerHealth health;
-    //[SerializeField] private PlayerInventory inventory;
-
-
-    /// <summary>
-    /// Player Character
-    /// </summary>
-    [Header("Character Attributes")] [SerializeField, Tooltip("Player ID")]
-    private int player_ID;
-
-    [SerializeField, Tooltip("Player Name")]
-    private string player_Name;
-
-    [SerializeField, Tooltip("Player Information")]
-    private Player_SO player_SO;
-
-    public int PlayerId { get; private set; }
-
-    private void Awake()
-    {
-        // Components find their hub instead of the whole scene
-        Initialize();
-        movement.Initialize();
-        mouseLook.Initialize();
-        input.Initialize();
-
-
-        //health.Initialize(this);
-        //inventory.Initialize(this);
-    }
-
-    private void Initialize()
-    {
-        if (player_SO != null)
-        {
-            player_ID = player_SO.Player_Id;
-            player_Name = player_SO.Player_Name;
-        }
-        else
-        {
-            player_ID = 9999;
-            player_Name = "Player Name";
-        }
-    }
-
-    // Global game events still flow through GameEvents
-    // but player-specific stuff stays here
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-    }
-
-
-    // Player Movement Events
-    public Action<Vector2> OnMovePerformed;
-    public Action OnMoveCanceled;
-    public Action OnJumpPressed;
-    public Action OnCrouchPressed;
-    public Action OnCrouchReleased;
-    public Action OnSprintPressed;
-    public Action OnSprintReleased;
-    public Action<Vector2> OnLookPerformed;
-    public Action OnLookCanceled;
-
-    public Action onMouseClicked;
-    public Action onMouseReleased;
-}
-</file>
-
-<file path="Assets/Scripts/Player/PlayerManager.cs.meta">
-fileFormatVersion: 2
-guid: 494597a7e22ebd045a27d0fafe213eb4
-</file>
-
-<file path="Assets/Scripts/Utilities/GameEvents.cs">
-using System;
-using UnityEngine;
-
-/// <summary>
-/// DO NOT CHANGE ORDER, ONLY ADD TO THE END!
-/// </summary>
-public static class GameEvents
-{
-    public static Action<object> DungeonGenerationComplete;
-    public static Action<object, bool> GenerationsComplete;
-    public static Action<object> NextSceneConfigurations;
-    public static Action<object> PlayerSpawnComplete;
-    public static Action<object> ReloadScene;
-    public static Action<object> RoomGenerationStart;
-    public static Action<object> SceneReady;
-    public static Action<object> SceneTransitionEnd;
-    public static Action<object> SceneTransitionStart;
-    public static Action<object> StartFadeIn;
-    public static Action<object> StartFadeOut;
-    public static Action<object, GameScenes> StartSceneChange;
-    public static Action<object> LoadScene;
-    public static Action<object> ExitGame;
-    public static Action<object, int> PickUpCoin;
-    public static Action<object> PickUpItem;
-    public static Action<object> UseCoin;
-    public static Action<object> ItemsSpawnStart;
-    public static Action<object> ItemsSpawnComplete;
-    public static Action<object, TimerType> TimerElapsed;
-    public static Action<object, TimerType, float> StartTimer;
-
-    public static Action OnNreleased;
-}
-</file>
-
-<file path="Assets/Scripts/Utilities/GameEvents.cs.meta">
-fileFormatVersion: 2
-guid: 89605b1d414ba36499724c4d85375e0c
-MonoImporter:
+guid: b0be3c92db244b54aa3a4aa0bb5f7d68
+NativeFormatImporter:
   externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant:
 </file>
 
-<file path="repomix.config.json">
-{
-  "output": {
-    "style": "xml",
-    "filePath": "repomix-output.xml"
-  },
-  "ignore": {
-    "useGitignore": true,
-    "customPatterns": [
-      "Library/**",
-      "Temp/**",
-      "obj/**",
-      "Logs/**",
-      "*.meta",
-      "*.fbx",
-      "*.png",
-      "*.jpg",
-      "*.wav",
-      "*.mp3",
-      "*.asset",
-      "*.unity",
-      "*.prefab",
-      "*.mat",
-      "*.shader"
-    ]
-  }
-}
+<file path="Little_Treasures.slnx">
+<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>
 </file>
 
 <file path=".gitignore">
@@ -1930,6 +1765,35 @@ NativeFormatImporter:
   assetBundleVariant:
 </file>
 
+<file path="Assets/Materials/Player_PhysicsMaterial.physicMaterial">
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!134 &13400000
+PhysicsMaterial:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_PhysicsMaterial
+  serializedVersion: 2
+  m_DynamicFriction: 0
+  m_StaticFriction: 0
+  m_Bounciness: 0
+  m_FrictionCombine: 2
+  m_BounceCombine: 2
+</file>
+
+<file path="Assets/Materials/Player_PhysicsMaterial.physicMaterial.meta">
+fileFormatVersion: 2
+guid: 1648148913233d547af853a25d7b37d2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 13400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant:
+</file>
+
 <file path="Assets/Prefabs.meta">
 fileFormatVersion: 2
 guid: 330a80d8210ffec48ae90bee53c32144
@@ -2012,7 +1876,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b0be3c92db244b54aa3a4aa0bb5f7d68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2034,6 +1898,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &1064173834120009564
 MeshCollider:
@@ -18627,80 +18492,6 @@ DefaultImporter:
   assetBundleVariant:
 </file>
 
-<file path="Assets/Scripts/Core/BlackScreenFadeController.cs">
-using System;
-using System.Collections;
-using UnityEngine;
-
-public class BlackScreenFadeController : MonoBehaviour
-{
-    [SerializeField] private Animator blackScreenAnimator;
-    [SerializeField] private StringVariable AnimationBoolName;
-    [SerializeField] private GameScenes nextScene;
-
-    private bool fadingOut;
-
-    private void Awake()
-    {
-        blackScreenAnimator = GetComponent<Animator>();
-    }
-
-    private void OnEnable()
-    {
-        GameEvents.StartFadeIn += FadeIn;
-        GameEvents.SceneTransitionStart += FadeOut;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.StartFadeIn -= FadeIn;
-        GameEvents.SceneTransitionStart -= FadeOut;
-    }
-
-    public void FadeIn(object sender)
-    {
-        fadingOut = false;
-        PlayAnimation(1);
-        StartCoroutine(WaitForAnimation("FadeIn"));
-    }
-
-    public void FadeOut(object sender)
-    {
-        fadingOut = true;
-        PlayAnimation(2);
-        StartCoroutine(WaitForAnimation("FadeOut"));
-    }
-
-    private void PlayAnimation(int state)
-    {
-        blackScreenAnimator.SetInteger(AnimationBoolName.value, state);
-    }
-
-    private IEnumerator WaitForAnimation(string animName)
-    {
-        // Wait until Animator is in the correct state
-        while (!blackScreenAnimator.GetCurrentAnimatorStateInfo(0).IsName(animName))
-            yield return null;
-
-        // Wait until animation finishes
-        while (blackScreenAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-            yield return null;
-
-        // Handle what happens after the animation ends
-        if (fadingOut && animName == "FadeOut")
-        {
-            Logger.Log("FadeOut");
-            GameEvents.StartSceneChange?.Invoke(this, nextScene);
-        }
-        else if (!fadingOut && animName == "FadeIn")
-        {
-            Logger.Log("FadeIn");
-            GameEvents.SceneReady?.Invoke(this);
-        }
-    }
-}
-</file>
-
 <file path="Assets/Scripts/Core/BlackScreenFadeController.cs.meta">
 fileFormatVersion: 2
 guid: be515456049a2a0448c1661b8e806951
@@ -18757,18 +18548,6 @@ fileFormatVersion: 2
 guid: 387817ef4f8cec84a8d4b7a082f3f1a0
 </file>
 
-<file path="Assets/Scripts/Core/CoinPickUpBehavior.cs">
-using UnityEngine;
-
-public class CoinPickUpBehavior : PickUpItem
-{
-    protected override void HandlePickup(GameObject player)
-    {
-        GameEvents.PickUpCoin?.Invoke(this, itemData.Value);
-    }
-}
-</file>
-
 <file path="Assets/Scripts/Core/CoinPickUpBehavior.cs.meta">
 fileFormatVersion: 2
 guid: 9481ad4c5e10cd444bce328ba4cc7dfe
@@ -18786,153 +18565,6 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant:
-</file>
-
-<file path="Assets/Scripts/Core/ItemSpawner.cs">
-using System.Linq;
-using UnityEngine;
-
-/// <summary>
-/// Item Spawner Class responsible for spawning items
-/// into valid dungeon rooms after dungeon generation.
-/// </summary>
-/// TODOS:
-/// - Add weighted loot tables
-/// - Scale spawn counts with difficulty
-/// - Support room-specific item rules
-public class ItemSpawner : MonoBehaviour
-{
-    #region Variables
-
-    [Header("Item Settings")] [SerializeField]
-    private ItemsToSpawn itemsToSpawn;
-
-    [SerializeField] private IntVariable maxItemSpawnAmount;
-
-    [Header("Dungeon References")] [SerializeField]
-    private DungeonCreator dungeonCreator;
-
-    public BoolVariable CompleteCheck;
-
-    #endregion
-
-    #region Initialization Functions
-
-    private void OnEnable()
-    {
-        GameEvents.DungeonGenerationComplete += Initialize;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.DungeonGenerationComplete -= Initialize;
-    }
-
-    /// <summary>
-    /// Initialize the item spawning process
-    /// </summary>
-    public void Initialize(object sender)
-    {
-        if (itemsToSpawn == null || dungeonCreator == null)
-        {
-            Debug.LogError("ItemSpawner missing required references");
-            return;
-        }
-
-        SpawnItems();
-    }
-
-    #endregion
-
-    #region Main Functions
-
-    /// <summary>
-    /// Iterates through all generated rooms and spawns items
-    /// </summary>
-    private void SpawnItems()
-    {
-        GameEvents.ItemsSpawnStart?.Invoke(this);
-        foreach (GameObject room in dungeonCreator.rooms)
-        {
-            SpawnItemsInRoom(room);
-        }
-
-        CompleteInit();
-    }
-
-    /// <summary>
-    /// Spawns items in a single room based on room type
-    /// and available spawn locations
-    /// </summary>
-    private void SpawnItemsInRoom(GameObject room)
-    {
-        RoomBehavior rb = room.GetComponent<RoomBehavior>();
-
-        // Only normal rooms spawn items
-        if (rb == null || rb.room_Type != RoomType.Normal)
-            return;
-
-        Transform spawnParent = room.transform.Find("ItemSpawns");
-        Transform itemParent = room.transform.Find("items");
-
-        if (spawnParent == null || itemParent == null)
-            return;
-
-        // Get all child transforms under spawnParent, skip the parent itself
-        Transform[] spawnPoints = spawnParent.GetComponentsInChildren<Transform>(true).Skip(1).ToArray(); // skip index 0, which is the parent
-
-        // Skip if no valid spawn points exist
-        if (spawnPoints.Length == 0)
-            return;
-
-        // Determine spawn count: at least 1, at most maxItemSpawnAmount or available points
-        int maxPossible = spawnPoints.Length;
-        int spawnCount = Mathf.Clamp(
-            Random.Range(1, maxItemSpawnAmount.getValue() + 1),
-            1,
-            maxPossible
-        );
-
-        // Shuffle spawn points for randomness
-        Shuffle(spawnPoints);
-
-        // Spawn items at the first N points
-        for (int i = 0; i < spawnCount; i++)
-        {
-            Instantiate(
-                itemsToSpawn.itemsToSpawn[0],
-                spawnPoints[i].position,
-                Quaternion.identity,
-                itemParent
-            );
-        }
-    }
-
-    public void CompleteInit()
-    {
-        CompleteCheck.setValue(true);
-        GameEvents.ItemsSpawnComplete?.Invoke(this);
-    }
-
-    #endregion
-
-    #region Helper Functions
-
-    /// <summary>
-    /// Randomizes the order of spawn points to ensure
-    /// unique and unbiased item placement
-    /// </summary>
-    private void Shuffle(Transform[] array)
-    {
-        for (int i = 0; i < array.Length; i++)
-        {
-            int j = Random.Range(i, array.Length);
-            (array[i], array[j]) = (array[j], array[i]);
-        }
-    }
-
-    #endregion
-}
 </file>
 
 <file path="Assets/Scripts/Core/ItemSpawner.cs.meta">
@@ -19013,116 +18645,9 @@ MonoImporter:
   assetBundleVariant:
 </file>
 
-<file path="Assets/Scripts/Core/PickUpItem.cs">
-using System;
-using Unity.VisualScripting;
-using UnityEngine;
-
-/// <summary>
-/// Summary Of File
-/// </summary>
-
-// ToDo:
-// - Add specific logic or initialization here
-public abstract class PickUpItem : MonoBehaviour
-{
-    #region Variables
-
-    // Declare fields, constants, and serialized variables here.
-    [SerializeField] public ItemDataSO itemData;
-
-    #endregion
-
-    #region Functions
-
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            HandlePickup(other.gameObject);
-            Logger.Log($"Player Pickup: {this.name}");
-            Destroy(gameObject);
-        }
-    }
-
-    protected abstract void HandlePickup(GameObject player);
-
-    #endregion
-}
-</file>
-
 <file path="Assets/Scripts/Core/PickUpItem.cs.meta">
 fileFormatVersion: 2
 guid: 170ae3033cdc1b845a4d90c8ff22b89b
-</file>
-
-<file path="Assets/Scripts/Core/PlayerSpawn.cs">
-using System;
-using UnityEngine;
-
-public class PlayerSpawn : MonoBehaviour
-{
-    [Header("Player Settings")] [SerializeField]
-    private GameObject playerPrefab; // Assign in Inspector
-
-    [SerializeField] private Vector3Variable spawnPoint;
-
-    public GameObject CurrentPlayer { get; private set; }
-    public bool PlayerReady { get; private set; }
-    public BoolVariable CompleteCheck;
-
-    private void OnEnable()
-    {
-        GameEvents.DungeonGenerationComplete += SpawnPlayer;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.DungeonGenerationComplete -= SpawnPlayer;
-    }
-
-    private void SpawnPlayer(object sender)
-    {
-        if (spawnPoint == null)
-        {
-            Logger.LogWarning("Spawn point not set. Spawning player at origin.");
-            spawnPoint = ScriptableObject.CreateInstance<Vector3Variable>();
-            spawnPoint.setValue(Vector3.zero);
-        }
-
-        // Prevent spawning again if a valid player already exists
-        if (CurrentPlayer != null)
-        {
-            if (CurrentPlayer != playerPrefab && CurrentPlayer.activeInHierarchy)
-            {
-                Logger.Log($"Player already exists: {CurrentPlayer.name}, skipping spawn.", CurrentPlayer);
-                PlayerReady = true;
-                return;
-            }
-            else
-            {
-                Logger.Log($"Destroying old or invalid player: {CurrentPlayer.name}");
-                Destroy(CurrentPlayer);
-            }
-        }
-
-        // Spawn new player
-        Vector3 pos = spawnPoint.getValue();
-        CurrentPlayer = Instantiate(playerPrefab, pos, Quaternion.identity);
-        CurrentPlayer.name = playerPrefab.name;
-        Logger.Log($"Spawned new player: {CurrentPlayer.name}", CurrentPlayer);
-
-        PlayerReady = true;
-        Logger.Log("Player done");
-        CompleteInit();
-    }
-
-    public void CompleteInit()
-    {
-        CompleteCheck.setValue(true);
-        GameEvents.PlayerSpawnComplete?.Invoke(CurrentPlayer);
-    }
-}
 </file>
 
 <file path="Assets/Scripts/Core/PlayerSpawn.cs.meta">
@@ -19153,27 +18678,6 @@ MonoImporter:
   assetBundleVariant:
 </file>
 
-<file path="Assets/Scripts/Core/RoomGenerationStart.cs">
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using UnityEngine;
-using UnityEngine.XR;
-
-/// <summary>
-/// This is to only start the generation of the room.
-/// Nothing Else
-/// </summary>
-public class RoomGenerationStart : MonoBehaviour
-{
-    private void Start()
-    {
-        GameEvents.RoomGenerationStart?.Invoke(this);
-    }
-}
-</file>
-
 <file path="Assets/Scripts/Core/RoomGenerationStart.cs.meta">
 fileFormatVersion: 2
 guid: 30d54a335155a5e4ba9a79fa03a38a50
@@ -19186,51 +18690,6 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant:
-</file>
-
-<file path="Assets/Scripts/Core/RoomManager.cs">
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class RoomManager : MonoBehaviour
-{
-    [Header("Generation Steps")] [SerializeField]
-    private List<BoolVariable> GenSteps = new List<BoolVariable>();
-
-    private void OnEnable()
-    {
-        GameEvents.DungeonGenerationComplete += CheckStates;
-        GameEvents.PlayerSpawnComplete += CheckStates;
-        GameEvents.ItemsSpawnComplete += CheckStates;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.DungeonGenerationComplete -= CheckStates;
-        GameEvents.PlayerSpawnComplete -= CheckStates;
-        GameEvents.ItemsSpawnComplete -= CheckStates;
-    }
-
-    public void CheckStates(object sender)
-    {
-        foreach (var step in GenSteps)
-        {
-            if (!step.getValue())
-                return;
-        }
-
-        GameEvents.GenerationsComplete?.Invoke(this, false);
-        ResetValues();
-    }
-
-
-    private void ResetValues()
-    {
-        foreach (var step in GenSteps)
-            step.setValue(false);
-    }
-}
 </file>
 
 <file path="Assets/Scripts/Core/RoomManager.cs.meta">
@@ -19287,51 +18746,70 @@ MonoImporter:
   assetBundleVariant:
 </file>
 
-<file path="Assets/Scripts/Core/TimerScript.cs">
-using System;
-using System.Collections;
-using UnityEngine;
-
-
-public class TimerScript : MonoBehaviour
-{
-    public float Timer;
-
-    private void OnEnable()
-    {
-        GameEvents.StartTimer += DoWait;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.StartTimer -= DoWait;
-    }
-
-    private void DoWait(object sender, TimerType type, float timeToWait)
-    {
-        Logger.LogWarning("Starting Timer");
-        StartCoroutine(WaitCoroutine(type, timeToWait));
-    }
-
-    private IEnumerator WaitCoroutine(TimerType type, float timeToWait)
-    {
-        yield return new WaitForSeconds(timeToWait);
-
-        Logger.LogWarning($"{timeToWait} seconds passed!");
-        GameEvents.TimerElapsed?.Invoke(this, type);
-    }
-}
-
-public enum TimerType
-{
-    GenerationsComplete,
-    GenerationsStart,
-}
-</file>
-
 <file path="Assets/Scripts/Core/TimerScript.cs.meta">
 fileFormatVersion: 2
 guid: 4a0f891c741c28c4fa98ff40952602fe
+</file>
+
+<file path="Assets/Scripts/Core/UnityClassTemplate.cs">
+using UnityEngine;
+
+/// <summary>
+/// Summary Of File
+/// </summary>
+
+// ToDo:
+// - Add specific logic or initialization here
+public class UnityClassTemplate : MonoBehaviour
+{
+    #region Variables
+    // Declare fields, constants, and serialized variables here.
+    [Header("References")]
+    [SerializeField] private GameObject exampleObject;
+    #endregion
+
+    #region Functions
+    // Called before Start().
+    // Initialize references and set up components.
+    private void Awake()
+    {
+    
+    }
+
+    // Called before the first frame update.
+    // Run startup logic that depends on other objects being initialized.
+    private void Start()
+    {
+        
+    }
+
+    // Called each time the object becomes enabled and active.
+    // Subscribe to events or reset state here.
+    private void OnEnable()
+    {
+        
+    }
+
+    // Called when the object is disabled or destroyed.
+    // Unsubscribe from events or clean up.
+    private void OnDisable()
+    {
+        
+    }
+
+    // Called once per frame.
+    // Handle per-frame logic such as input or movement.
+    private void Update()
+    {
+        
+    }
+    #endregion
+}
+</file>
+
+<file path="Assets/Scripts/Core/UnityClassTemplate.cs.meta">
+fileFormatVersion: 2
+guid: 2c95e0ca89228b842abb27a4b9c10e08
 </file>
 
 <file path="Assets/Scripts/Editor.meta">
@@ -19522,59 +19000,6 @@ DefaultImporter:
   assetBundleVariant:
 </file>
 
-<file path="Assets/Scripts/Player/InventoryManager.cs">
-using System;
-using UnityEngine;
-
-/// <summary>
-/// Summary Of File
-/// </summary>
-
-// ToDo:
-// - Add specific logic or initialization here
-public class InventoryManager : MonoBehaviour
-{
-    #region Variables
-
-    // Declare fields, constants, and serialized variables here.
-    [Header("Items")] [SerializeField] private int currCoinAmount;
-    [SerializeField] private IntVariable globalCoinAmount;
-
-    #endregion
-
-    #region Functions
-
-    private void Awake()
-    {
-        Initialize();
-    }
-
-    private void OnEnable()
-    {
-        GameEvents.PickUpCoin += PickupCoin;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.PickUpCoin -= PickupCoin;
-    }
-
-    private void Initialize()
-    {
-        currCoinAmount = globalCoinAmount.getValue();
-    }
-
-    public void PickupCoin(object sender, int amount)
-    {
-        Logger.Log($"Pickup Coin Amount: {amount}");
-        currCoinAmount += amount;
-        globalCoinAmount.setValue(currCoinAmount);
-    }
-
-    #endregion
-}
-</file>
-
 <file path="Assets/Scripts/Player/InventoryManager.cs.meta">
 fileFormatVersion: 2
 guid: 4ffd1c315324cc943a20e8f085e19cbb
@@ -19619,6 +19044,148 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant:
+</file>
+
+<file path="Assets/Scripts/Player/PlayerInput.cs">
+using UnityEngine;
+
+namespace Player
+{
+    public class PlayerInput : MonoBehaviour
+    {
+        private PlayerInputs playerInputs;
+
+        [SerializeField] private PlayerManager player;
+
+        // Raw mouse delta from input
+        private Vector2 mouseDelta;
+
+        public void Initialize()
+        {
+            playerInputs = new PlayerInputs();
+            player = GetComponent<PlayerManager>();
+
+            playerInputs.Enable();
+
+            playerInputs.Main.Movement.performed += ctx => player.OnMovePerformed?.Invoke(ctx.ReadValue<Vector2>());
+            playerInputs.Main.Movement.canceled += ctx => player.OnMoveCanceled?.Invoke();
+
+            playerInputs.Main.Jump.performed += ctx => player.OnJumpPressed?.Invoke();
+            playerInputs.Main.Crouch.performed += ctx => player.OnCrouchPressed?.Invoke();
+            playerInputs.Main.Crouch.canceled += ctx => player.OnCrouchReleased?.Invoke();
+            playerInputs.Main.Sprint.performed += ctx => player.OnSprintPressed?.Invoke();
+            playerInputs.Main.Sprint.canceled += ctx => player.OnSprintReleased?.Invoke();
+            playerInputs.Main.MouseClick.performed += ctx => player.onMouseClicked?.Invoke();
+            playerInputs.Main.MouseClick.canceled += ctx => player.onMouseReleased?.Invoke();
+            playerInputs.Main.N.performed += ctx => GameEvents.OnNreleased?.Invoke();
+
+            playerInputs.Main.Look.performed += ctx => player.OnLookPerformed?.Invoke(ctx.ReadValue<Vector2>());
+            playerInputs.Main.Look.canceled += _ => player.OnLookCanceled?.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            playerInputs?.Disable();
+            playerInputs?.Dispose();
+        }
+    }
+}
+</file>
+
+<file path="Assets/Scripts/Player/PlayerInput.cs.meta">
+fileFormatVersion: 2
+guid: f5b827490570428caa876ce8da3106c3
+timeCreated: 1774727951
+</file>
+
+<file path="Assets/Scripts/Player/PlayerManager.cs">
+using System;
+using Player;
+using UnityEngine;
+
+public class PlayerManager : MonoBehaviour
+{
+    [Header("Components")] [SerializeField]
+    private PlayerMovement movement;
+
+    [SerializeField] private PlayerInput input;
+
+    [SerializeField] private MouseLook mouseLook;
+    //[SerializeField] private PlayerHealth health;
+    //[SerializeField] private PlayerInventory inventory;
+
+
+    /// <summary>
+    /// Player Character
+    /// </summary>
+    [Header("Character Attributes")] [SerializeField, Tooltip("Player ID")]
+    private int player_ID;
+
+    [SerializeField, Tooltip("Player Name")]
+    private string player_Name;
+
+    [SerializeField, Tooltip("Player Information")]
+    private Player_SO player_SO;
+
+    public int PlayerId { get; private set; }
+
+    private void Awake()
+    {
+        // Components find their hub instead of the whole scene
+        Initialize();
+        movement.Initialize();
+        mouseLook.Initialize();
+        input.Initialize();
+
+
+        //health.Initialize(this);
+        //inventory.Initialize(this);
+    }
+
+    private void Initialize()
+    {
+        if (player_SO != null)
+        {
+            player_ID = player_SO.Player_Id;
+            player_Name = player_SO.Player_Name;
+        }
+        else
+        {
+            player_ID = 9999;
+            player_Name = "Player Name";
+        }
+    }
+
+    // Global game events still flow through GameEvents
+    // but player-specific stuff stays here
+    private void OnEnable()
+    {
+    }
+
+    private void OnDisable()
+    {
+    }
+
+
+    // Player Movement Events
+    public Action<Vector2> OnMovePerformed;
+    public Action OnMoveCanceled;
+    public Action OnJumpPressed;
+    public Action OnCrouchPressed;
+    public Action OnCrouchReleased;
+    public Action OnSprintPressed;
+    public Action OnSprintReleased;
+    public Action<Vector2> OnLookPerformed;
+    public Action OnLookCanceled;
+
+    public Action onMouseClicked;
+    public Action onMouseReleased;
+}
+</file>
+
+<file path="Assets/Scripts/Player/PlayerManager.cs.meta">
+fileFormatVersion: 2
+guid: 494597a7e22ebd045a27d0fafe213eb4
 </file>
 
 <file path="Assets/Scripts/Player/PlayerMovement.cs.meta">
@@ -19901,6 +19468,55 @@ MonoImporter:
   assetBundleVariant:
 </file>
 
+<file path="Assets/Scripts/Utilities/GameEvents.cs">
+using System;
+using UnityEngine;
+
+/// <summary>
+/// DO NOT CHANGE ORDER, ONLY ADD TO THE END!
+/// </summary>
+public static class GameEvents
+{
+    public static Action<object> DungeonGenerationComplete;
+    public static Action<object, bool> GenerationsComplete;
+    public static Action<object> NextSceneConfigurations;
+    public static Action<object> PlayerSpawnComplete;
+    public static Action<object> ReloadScene;
+    public static Action<object> RoomGenerationStart;
+    public static Action<object> SceneReady;
+    public static Action<object> SceneTransitionEnd;
+    public static Action<object> SceneTransitionStart;
+    public static Action<object> StartFadeIn;
+    public static Action<object> StartFadeOut;
+    public static Action<object, GameScenes> StartSceneChange;
+    public static Action<object> LoadScene;
+    public static Action<object> ExitGame;
+    public static Action<object, int> PickUpCoin;
+    public static Action<object> PickUpItem;
+    public static Action<object> UseCoin;
+    public static Action<object> ItemsSpawnStart;
+    public static Action<object> ItemsSpawnComplete;
+    public static Action<object, TimerType> TimerElapsed;
+    public static Action<object, TimerType, float> StartTimer;
+
+    public static Action OnNreleased;
+}
+</file>
+
+<file path="Assets/Scripts/Utilities/GameEvents.cs.meta">
+fileFormatVersion: 2
+guid: 89605b1d414ba36499724c4d85375e0c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant:
+</file>
+
 <file path="Assets/Scripts/Utilities/InputManager.cs.meta">
 fileFormatVersion: 2
 guid: 5435bb810e42b534587df274dde40c99
@@ -19933,7 +19549,7 @@ MonoImporter:
 //------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was auto-generated by com.unity.inputsystem:InputActionCodeGenerator
-//     version 1.14.2
+//     version 1.19.0
 //     from Assets/Scripts/Utilities/PlayerInputs.inputactions
 //
 //     Changes to this file may cause incorrect behavior and will be lost if
@@ -157049,6 +156665,35 @@ VFXManager:
 Little Treasures FPS 3d Rogue like game
 </file>
 
+<file path="repomix.config.json">
+{
+  "output": {
+    "style": "xml",
+    "filePath": "repomix-output.xml"
+  },
+  "ignore": {
+    "useGitignore": true,
+    "customPatterns": [
+      "Library/**",
+      "Temp/**",
+      "obj/**",
+      "Logs/**",
+      "*.meta",
+      "*.fbx",
+      "*.png",
+      "*.jpg",
+      "*.wav",
+      "*.mp3",
+      "*.asset",
+      "*.unity",
+      "*.prefab",
+      "*.mat",
+      "*.shader"
+    ]
+  }
+}
+</file>
+
 <file path="UIElementsSchema/UIElements.xsd">
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:editor="UnityEditor.UIElements" xmlns:engine="UnityEngine.UIElements" xmlns="UnityEditor.Accessibility" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -190601,64 +190246,115 @@ SceneRoots:
   - {fileID: 1810054748}
 </file>
 
-<file path="Assets/Scripts/Core/DungeonCreator.cs">
+<file path="Assets/Scripts/Core/BlackScreenFadeController.cs">
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
+
+public class BlackScreenFadeController : MonoBehaviour
+{
+    [SerializeField] private Animator blackScreenAnimator;
+    [SerializeField] private StringVariable AnimationBoolName;
+    [SerializeField] private GameScenes nextScene;
+
+    private bool fadingOut;
+
+    private void Awake()
+    {
+        blackScreenAnimator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.StartFadeIn += FadeIn;
+        GameEvents.SceneTransitionStart += FadeOut;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.StartFadeIn -= FadeIn;
+        GameEvents.SceneTransitionStart -= FadeOut;
+    }
+
+    public void FadeIn(object sender)
+    {
+        fadingOut = false;
+        PlayAnimation(1);
+        StartCoroutine(WaitForAnimation("FadeIn"));
+    }
+
+    public void FadeOut(object sender)
+    {
+        fadingOut = true;
+        PlayAnimation(2);
+        StartCoroutine(WaitForAnimation("FadeOut"));
+    }
+
+    private void PlayAnimation(int state)
+    {
+        blackScreenAnimator.SetInteger(AnimationBoolName.value, state);
+    }
+
+    private IEnumerator WaitForAnimation(string animName)
+    {
+        // Wait until Animator is in the correct state
+        while (!blackScreenAnimator.GetCurrentAnimatorStateInfo(0).IsName(animName))
+            yield return null;
+
+        // Wait until animation finishes
+        while (blackScreenAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            yield return null;
+
+        // Handle what happens after the animation ends
+        if (fadingOut && animName == "FadeOut")
+        {
+            Logger.Log("FadeOut");
+            GameEvents.StartSceneChange?.Invoke(this, nextScene);
+        }
+        else if (!fadingOut && animName == "FadeIn")
+        {
+            Logger.Log("FadeIn");
+            GameEvents.SceneReady?.Invoke(this);
+        }
+    }
+}
+</file>
+
+<file path="Assets/Scripts/Core/CoinPickUpBehavior.cs">
+using UnityEngine;
+
+public class CoinPickUpBehavior : PickUpItem
+{
+    protected override void HandlePickup(GameObject player)
+    {
+        GameEvents.PickUpCoin?.Invoke(this, itemData.Value);
+    }
+}
+</file>
+
+<file path="Assets/Scripts/Core/ItemSpawner.cs">
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Dungeon Creation Class that creates the dungeon with randomly generated rooms/directions for a unique level each time
+/// Item Spawner Class responsible for spawning items
+/// into valid dungeon rooms after dungeon generation.
 /// </summary>
 /// TODOS:
-/// Fix ending boss room. Still doesnt spawn sometimes. 
-/// Create Spawn points for items in rooms
-/// Update for difficulty with game progression
-public class DungeonCreator : MonoBehaviour
+/// - Add weighted loot tables
+/// - Scale spawn counts with difficulty
+/// - Support room-specific item rules
+public class ItemSpawner : MonoBehaviour
 {
     #region Variables
 
-    /// <summary>
-    /// 4 directions of a room
-    /// </summary>
-    public enum Direction
-    {
-        North = 0,
-        East = 1,
-        South = 2,
-        West = 3
-    }
+    [Header("Item Settings")] [SerializeField]
+    private ItemsToSpawn itemsToSpawn;
 
-    /// <summary>
-    /// Represents a dungeon room in the grid
-    /// </summary>
-    public class Cell
-    {
-        public bool visited;
-        public bool[] status = new bool[4]; // doors: 0=N,1=E,2=S,3=W
-        public bool isStartRoom;
-        public bool isBossRoom;
-    }
+    [SerializeField] private IntVariable maxItemSpawnAmount;
 
-    /// <summary>
-    /// set base values for random generation
-    /// </summary>
-    [Header("Dungeon Settings")] public Vector2Int size = new Vector2Int(9, 9); // grid dimensions
-
-    public int mainPathLength = 8; // how long the main path is
-    public int minTotalRooms = 1; // minimum number of rooms 
-    public int totalRooms = 15; // maximum number of rooms
-    [Range(0f, 1f)] public float branchChance = 0.5f; // chance to add branches
-    [Range(0f, 1f)] public float loopChance = 0.3f; // chance to add loops
-
-    [Header("Room Prefab & Positioning")] public GameObject room;
-    public Vector2 offset = new Vector2(12, 12); // spacing between rooms
-
-    private Cell[,] grid;
-    public List<GameObject> rooms;
-    private Vector2Int startPos;
-    public Vector3Variable playerSpawnPoint;
-
-    private int visitedCount = 0;
+    [Header("Dungeon References")] [SerializeField]
+    private DungeonCreator dungeonCreator;
 
     public BoolVariable CompleteCheck;
 
@@ -190668,52 +190364,26 @@ public class DungeonCreator : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.RoomGenerationStart += Initialize;
+        GameEvents.DungeonGenerationComplete += Initialize;
     }
 
     private void OnDisable()
     {
-        GameEvents.RoomGenerationStart -= Initialize;
+        GameEvents.DungeonGenerationComplete -= Initialize;
     }
 
     /// <summary>
-    /// Initialize the dungeon Creation
+    /// Initialize the item spawning process
     /// </summary>
     public void Initialize(object sender)
     {
-        GenerateDungeon();
-    }
+        if (itemsToSpawn == null || dungeonCreator == null)
+        {
+            Debug.LogError("ItemSpawner missing required references");
+            return;
+        }
 
-    private void GenerateDungeon()
-    {
-        // Initialize grid
-        visitedCount = 0; // reset before generation
-        grid = new Cell[size.x, size.y];
-        for (int x = 0; x < size.x; x++)
-        for (int y = 0; y < size.y; y++)
-            grid[x, y] = new Cell();
-        rooms = new List<GameObject>();
-
-        startPos = new Vector2Int(0, 0);
-
-        // 1. Generate main path
-        GenerateMainPath();
-        // 2. Generate branches
-        GenerateBranches();
-        // 3. Add loops for a grid-like network
-        GenerateLoops();
-        // 4. Find and place boss room
-        FinalizeBossRoom();
-        // 5. Instantiate room prefabs into the world
-        InstantiateDungeonFromGrid();
-        // 6. Send Event when dungeon is generated
-        CompleteInit();
-    }
-
-    public void CompleteInit()
-    {
-        CompleteCheck.setValue(true);
-        GameEvents.DungeonGenerationComplete?.Invoke(this);
+        SpawnItems();
     }
 
     #endregion
@@ -190721,321 +190391,198 @@ public class DungeonCreator : MonoBehaviour
     #region Main Functions
 
     /// <summary>
-    /// Generates the main path from the start position.
+    /// Iterates through all generated rooms and spawns items
     /// </summary>
-    private void GenerateMainPath()
+    private void SpawnItems()
     {
-        Vector2Int current = startPos;
-        MarkVisited(current.x, current.y);
-        grid[current.x, current.y].isStartRoom = true;
-
-        for (int i = 1; i < mainPathLength; i++)
+        GameEvents.ItemsSpawnStart?.Invoke(this);
+        foreach (GameObject room in dungeonCreator.rooms)
         {
-            List<Direction> validDirs = PickDirection(current);
-            if (validDirs.Count == 0) break;
-
-            Direction dir = validDirs[Random.Range(0, validDirs.Count)];
-            Vector2Int next = GetOffset(current, dir);
-
-            if (HasExtraNeighbors(next, current)) continue;
-
-            // Connect rooms
-            grid[current.x, current.y].status[(int)dir] = true;
-            grid[next.x, next.y].status[(int)Opposite(dir)] = true;
-
-            current = next;
-            MarkVisited(current.x, current.y);
+            SpawnItemsInRoom(room);
         }
+
+        CompleteInit();
     }
 
     /// <summary>
-    /// Instantiate room prefabs for all visited cells.
+    /// Spawns items in a single room based on room type
+    /// and available spawn locations
     /// </summary>
-    private void InstantiateDungeonFromGrid()
+    private void SpawnItemsInRoom(GameObject room)
     {
-        rooms.Clear();
-        for (int x = 0; x < size.x; x++)
-        {
-            for (int y = 0; y < size.y; y++)
-            {
-                if (!grid[x, y].visited) continue;
+        RoomBehavior rb = room.GetComponent<RoomBehavior>();
 
-                Vector3 position = new Vector3(x * offset.x, 0, y * offset.y);
-                GameObject newRoom = Instantiate(room, position, Quaternion.identity, transform);
-
-                rooms.Add(newRoom);
-                RoomBehavior rb = newRoom.GetComponent<RoomBehavior>();
-                rb.UpdateRoom(grid[x, y].status);
-
-                if (grid[x, y].isStartRoom) rb.SetType(RoomType.Start);
-                else if (grid[x, y].isBossRoom) rb.SetType(RoomType.Boss);
-                else rb.SetType(RoomType.Normal);
-            }
-        }
-    }
-
-    /// <summary>
-    /// Adds random branches from the main path
-    /// until the total room count is reached.
-    /// </summary>
-    private void GenerateBranches()
-    {
-        List<Vector2Int> visitedRooms = new();
-        for (int x = 0; x < size.x; x++)
-        for (int y = 0; y < size.y; y++)
-            if (grid[x, y].visited)
-                visitedRooms.Add(new Vector2Int(x, y));
-
-        foreach (Vector2Int pos in visitedRooms)
-        {
-            foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
-            {
-                if (visitedCount >= totalRooms) return;
-
-                // If we're under minTotalRooms, force expansion.
-                // Otherwise, rely on branchChance.
-                if (visitedCount < minTotalRooms || Random.value <= branchChance)
-                {
-                    Vector2Int branch = GetOffset(pos, dir);
-                    if (!IsInBounds(branch.x, branch.y) || grid[branch.x, branch.y].visited) continue;
-                    if (HasExtraNeighbors(branch, pos)) continue;
-
-                    grid[pos.x, pos.y].status[(int)dir] = true;
-                    grid[branch.x, branch.y].status[(int)Opposite(dir)] = true;
-                    grid[branch.x, branch.y].visited = true;
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// Randomly connects nearby rooms to create loops,
-    /// which prevents the dungeon from being a simple tree.
-    /// </summary>
-    private void GenerateLoops()
-    {
-        for (int x = 0; x < size.x; x++)
-        {
-            for (int y = 0; y < size.y; y++)
-            {
-                if (!grid[x, y].visited) continue;
-
-                foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
-                {
-                    Vector2Int neighbor = GetOffset(new Vector2Int(x, y), dir);
-                    if (!IsInBounds(neighbor.x, neighbor.y)) continue;
-                    if (!grid[neighbor.x, neighbor.y].visited) continue;
-
-                    // Already connected?
-                    if (grid[x, y].status[(int)dir]) continue;
-
-                    // Chance to connect
-                    if (Random.value < loopChance)
-                    {
-                        grid[x, y].status[(int)dir] = true;
-                        grid[neighbor.x, neighbor.y].status[(int)Opposite(dir)] = true;
-                    }
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// Finds the farthest room from the start,
-    /// and ensures it becomes a dead-end boss room.
-    /// </summary>
-    private void FinalizeBossRoom()
-    {
-        // Step 1: BFS to find farthest room from start
-        Queue<Vector2Int> queue = new Queue<Vector2Int>();
-        Dictionary<Vector2Int, int> dist = new Dictionary<Vector2Int, int>();
-
-        queue.Enqueue(startPos);
-        dist[startPos] = 0;
-
-        Vector2Int farthest = startPos;
-        int maxDist = 0;
-
-        while (queue.Count > 0)
-        {
-            Vector2Int current = queue.Dequeue();
-            int currentDist = dist[current];
-
-            if (currentDist > maxDist)
-            {
-                maxDist = currentDist;
-                farthest = current;
-            }
-
-            for (int d = 0; d < 4; d++)
-            {
-                if (!grid[current.x, current.y].status[d]) continue;
-
-                Vector2Int neighbor = GetOffset(current, (Direction)d);
-                if (!IsInBounds(neighbor.x, neighbor.y)) continue;
-                if (!grid[neighbor.x, neighbor.y].visited) continue;
-
-                if (!dist.ContainsKey(neighbor))
-                {
-                    dist[neighbor] = currentDist + 1;
-                    queue.Enqueue(neighbor);
-                }
-            }
-        }
-
-        // Step 2: ensure farthest is a dead-end
-        int connections = CountConnections(farthest);
-
-        if (connections == 1)
-        {
-            // Already a dead-end
-            grid[farthest.x, farthest.y].isBossRoom = true;
+        // Only normal rooms spawn items
+        if (rb == null || rb.room_Type != RoomType.Normal)
             return;
-        }
 
-        // Step 3: if possible, add a new room as a boss
-        if (visitedCount < totalRooms)
+        Transform spawnParent = room.transform.Find("ItemSpawns");
+        Transform itemParent = room.transform.Find("items");
+
+        if (spawnParent == null || itemParent == null)
+            return;
+
+        // Get all child transforms under spawnParent, skip the parent itself
+        Transform[] spawnPoints = spawnParent.GetComponentsInChildren<Transform>(true).Skip(1).ToArray(); // skip index 0, which is the parent
+
+        // Skip if no valid spawn points exist
+        if (spawnPoints.Length == 0)
+            return;
+
+        // Determine spawn count: at least 1, at most maxItemSpawnAmount or available points
+        int maxPossible = spawnPoints.Length;
+        int spawnCount = Mathf.Clamp(
+            Random.Range(1, maxItemSpawnAmount.getValue() + 1),
+            1,
+            maxPossible
+        );
+
+        // Shuffle spawn points for randomness
+        Shuffle(spawnPoints);
+
+        // Spawn items at the first N points
+        for (int i = 0; i < spawnCount; i++)
         {
-            List<Direction> availableDirs = PickDirection(farthest);
-            if (availableDirs.Count > 0)
-            {
-                Direction dir = availableDirs[Random.Range(0, availableDirs.Count)];
-                Vector2Int newRoomPos = GetOffset(farthest, dir);
-
-                // Create connection to new boss room
-                grid[farthest.x, farthest.y].status[(int)dir] = true;
-                grid[newRoomPos.x, newRoomPos.y].status[(int)Opposite(dir)] = true;
-                grid[newRoomPos.x, newRoomPos.y].visited = true;
-
-                grid[newRoomPos.x, newRoomPos.y].isBossRoom = true;
-                return;
-            }
+            Instantiate(
+                itemsToSpawn.itemsToSpawn[0],
+                spawnPoints[i].position,
+                Quaternion.identity,
+                itemParent
+            );
         }
+    }
 
-        // Step 4: force prune to dead-end if no room can be added
-        PruneToDeadEnd(farthest);
-        grid[farthest.x, farthest.y].isBossRoom = true;
+    public void CompleteInit()
+    {
+        CompleteCheck.setValue(true);
+        GameEvents.ItemsSpawnComplete?.Invoke(this);
     }
 
     #endregion
 
     #region Helper Functions
 
-    private void MarkVisited(int x, int y)
-    {
-        if (grid[x, y].visited) return; // don't double count
-        grid[x, y].visited = true;
-        visitedCount++;
-    }
-
-    private int CountConnections(Vector2Int pos)
-    {
-        int c = 0;
-        foreach (bool d in grid[pos.x, pos.y].status)
-            if (d)
-                c++;
-        return c;
-    }
-
-    private void PruneToDeadEnd(Vector2Int pos)
-    {
-        // Keep only the first valid connection, remove others
-        bool keptOne = false;
-        for (int d = 0; d < 4; d++)
-        {
-            if (!grid[pos.x, pos.y].status[d]) continue;
-
-            if (!keptOne)
-            {
-                keptOne = true;
-                continue; // keep first connection
-            }
-
-            // remove extra connections
-            grid[pos.x, pos.y].status[d] = false;
-
-            Vector2Int neighbor = GetOffset(pos, (Direction)d);
-            if (IsInBounds(neighbor.x, neighbor.y))
-                grid[neighbor.x, neighbor.y].status[(int)Opposite((Direction)d)] = false;
-        }
-    }
-
-    private bool HasExtraNeighbors(Vector2Int cell, Vector2Int parent)
-    {
-        foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
-        {
-            Vector2Int neighbor = GetOffset(cell, dir);
-            if (!IsInBounds(neighbor.x, neighbor.y)) continue;
-            if (grid[neighbor.x, neighbor.y].visited && neighbor != parent) return true;
-        }
-
-        return false;
-    }
-
-    private List<Direction> PickDirection(Vector2Int pos)
-    {
-        List<Direction> dirs = new();
-        foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
-        {
-            Vector2Int next = GetOffset(pos, dir);
-            if (IsInBounds(next.x, next.y) && !grid[next.x, next.y].visited)
-                dirs.Add(dir);
-        }
-
-        return dirs;
-    }
-
-    private Vector2Int GetOffset(Vector2Int pos, Direction dir)
-    {
-        return dir switch
-        {
-            Direction.North => new Vector2Int(pos.x, pos.y + 1),
-            Direction.East => new Vector2Int(pos.x + 1, pos.y),
-            Direction.South => new Vector2Int(pos.x, pos.y - 1),
-            Direction.West => new Vector2Int(pos.x - 1, pos.y),
-            _ => pos
-        };
-    }
-
-    private Direction Opposite(Direction dir) => (Direction)(((int)dir + 2) % 4);
-
-    private bool IsInBounds(int x, int y) => x >= 0 && y >= 0 && x < size.x && y < size.y;
-
-    #endregion
-
-    #region Misc Functions
-
     /// <summary>
-    /// Draw cubes in the rooms to visualize room types
+    /// Randomizes the order of spawn points to ensure
+    /// unique and unbiased item placement
     /// </summary>
-    private void OnDrawGizmos()
+    private void Shuffle(Transform[] array)
     {
-        if (grid == null) return;
-
-        // Scale gizmos relative to room spacing
-        Vector3 gizmoSize = new Vector3(offset.x * 0.6f, 1, offset.y * 0.6f);
-
-        for (int x = 0; x < size.x; x++)
+        for (int i = 0; i < array.Length; i++)
         {
-            for (int y = 0; y < size.y; y++)
-            {
-                if (!grid[x, y].visited) continue;
-
-                Vector3 pos = new Vector3(x * offset.x, 0.25f, y * offset.y);
-
-                if (grid[x, y].isStartRoom)
-                    Gizmos.color = Color.green;
-                else if (grid[x, y].isBossRoom)
-                    Gizmos.color = Color.red;
-                else
-                    Gizmos.color = Color.blue;
-
-                Gizmos.DrawCube(pos, gizmoSize);
-            }
+            int j = Random.Range(i, array.Length);
+            (array[i], array[j]) = (array[j], array[i]);
         }
     }
 
     #endregion
+}
+</file>
+
+<file path="Assets/Scripts/Core/PickUpItem.cs">
+using System;
+using Unity.VisualScripting;
+using UnityEngine;
+
+/// <summary>
+/// Summary Of File
+/// </summary>
+
+// ToDo:
+// - Add specific logic or initialization here
+public abstract class PickUpItem : MonoBehaviour
+{
+    #region Variables
+
+    // Declare fields, constants, and serialized variables here.
+    [SerializeField] public ItemDataSO itemData;
+
+    #endregion
+
+    #region Functions
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            HandlePickup(other.gameObject);
+            Logger.Log($"Player Pickup: {this.name}");
+            Destroy(gameObject);
+        }
+    }
+
+    protected abstract void HandlePickup(GameObject player);
+
+    #endregion
+}
+</file>
+
+<file path="Assets/Scripts/Core/PlayerSpawn.cs">
+using System;
+using UnityEngine;
+
+public class PlayerSpawn : MonoBehaviour
+{
+    [Header("Player Settings")] [SerializeField]
+    private GameObject playerPrefab; // Assign in Inspector
+
+    [SerializeField] private Vector3Variable spawnPoint;
+
+    public GameObject CurrentPlayer { get; private set; }
+    public bool PlayerReady { get; private set; }
+    public BoolVariable CompleteCheck;
+
+    private void OnEnable()
+    {
+        GameEvents.DungeonGenerationComplete += SpawnPlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.DungeonGenerationComplete -= SpawnPlayer;
+    }
+
+    private void SpawnPlayer(object sender)
+    {
+        if (spawnPoint == null)
+        {
+            Logger.LogWarning("Spawn point not set. Spawning player at origin.");
+            spawnPoint = ScriptableObject.CreateInstance<Vector3Variable>();
+            spawnPoint.setValue(Vector3.zero);
+        }
+
+        // Prevent spawning again if a valid player already exists
+        if (CurrentPlayer != null)
+        {
+            if (CurrentPlayer != playerPrefab && CurrentPlayer.activeInHierarchy)
+            {
+                Logger.Log($"Player already exists: {CurrentPlayer.name}, skipping spawn.", CurrentPlayer);
+                PlayerReady = true;
+                return;
+            }
+            else
+            {
+                Logger.Log($"Destroying old or invalid player: {CurrentPlayer.name}");
+                Destroy(CurrentPlayer);
+            }
+        }
+
+        // Spawn new player
+        Vector3 pos = spawnPoint.getValue();
+        CurrentPlayer = Instantiate(playerPrefab, pos, Quaternion.identity);
+        CurrentPlayer.name = playerPrefab.name;
+        Logger.Log($"Spawned new player: {CurrentPlayer.name}", CurrentPlayer);
+
+        PlayerReady = true;
+        Logger.Log("Player done");
+        CompleteInit();
+    }
+
+    public void CompleteInit()
+    {
+        CompleteCheck.setValue(true);
+        GameEvents.PlayerSpawnComplete?.Invoke(CurrentPlayer);
+    }
 }
 </file>
 
@@ -191082,48 +190629,111 @@ public class RoomBehavior : MonoBehaviour
 }
 </file>
 
-<file path="Assets/Scripts/Core/SceneTransition.cs">
-using System;
+<file path="Assets/Scripts/Core/RoomGenerationStart.cs">
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
-public class SceneTransition : MonoBehaviour
+/// <summary>
+/// This is to only start the generation of the room.
+/// Nothing Else
+/// </summary>
+public class RoomGenerationStart : MonoBehaviour
 {
-    [SerializeField] private GameObject CanavasController;
+    private void Start()
+    {
+        GameEvents.RoomGenerationStart?.Invoke(this);
+    }
+}
+</file>
+
+<file path="Assets/Scripts/Core/RoomManager.cs">
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RoomManager : MonoBehaviour
+{
+    [Header("Generation Steps")] [SerializeField]
+    private List<BoolVariable> GenSteps = new List<BoolVariable>();
 
     private void OnEnable()
     {
-        GameEvents.StartSceneChange += SceneLoad;
-        GameEvents.LoadScene += LoadNextScene;
-        GameEvents.GenerationsComplete += SetCanvasState;
-        GameEvents.ReloadScene += LoadNextScene;
+        GameEvents.DungeonGenerationComplete += CheckStates;
+        GameEvents.PlayerSpawnComplete += CheckStates;
+        GameEvents.ItemsSpawnComplete += CheckStates;
     }
 
     private void OnDisable()
     {
-        GameEvents.StartSceneChange -= SceneLoad;
-        GameEvents.LoadScene -= LoadNextScene;
-        GameEvents.GenerationsComplete -= SetCanvasState;
-        GameEvents.ReloadScene -= LoadNextScene;
+        GameEvents.DungeonGenerationComplete -= CheckStates;
+        GameEvents.PlayerSpawnComplete -= CheckStates;
+        GameEvents.ItemsSpawnComplete -= CheckStates;
     }
 
-    public void SceneLoad(object sender, GameScenes scene)
+    public void CheckStates(object sender)
     {
-        Logger.Log($"Scene to change to: {scene}");
-        SceneManager.LoadScene(scene.ToString());
+        foreach (var step in GenSteps)
+        {
+            if (!step.getValue())
+                return;
+        }
+
+        GameEvents.GenerationsComplete?.Invoke(this, false);
+        ResetValues();
     }
 
-    public void LoadNextScene(object sender)
+
+    private void ResetValues()
     {
-        Logger.Log("Load Next Scene");
-        GameEvents.SceneTransitionStart?.Invoke(this);
-        //SetCanvasState(true);
+        foreach (var step in GenSteps)
+            step.setValue(false);
+    }
+}
+</file>
+
+<file path="Assets/Scripts/Core/TimerScript.cs">
+using System;
+using System.Collections;
+using UnityEngine;
+
+
+public class TimerScript : MonoBehaviour
+{
+    public float Timer;
+
+    private void OnEnable()
+    {
+        GameEvents.StartTimer += DoWait;
     }
 
-    public void SetCanvasState(object sender, bool state)
+    private void OnDisable()
     {
-        CanavasController.SetActive(state);
+        GameEvents.StartTimer -= DoWait;
     }
+
+    private void DoWait(object sender, TimerType type, float timeToWait)
+    {
+        Logger.LogWarning("Starting Timer");
+        StartCoroutine(WaitCoroutine(type, timeToWait));
+    }
+
+    private IEnumerator WaitCoroutine(TimerType type, float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+
+        Logger.LogWarning($"{timeToWait} seconds passed!");
+        GameEvents.TimerElapsed?.Invoke(this, type);
+    }
+}
+
+public enum TimerType
+{
+    GenerationsComplete,
+    GenerationsStart,
 }
 </file>
 
@@ -191332,6 +190942,59 @@ public class ItemImporter : EditorWindow
         AssetDatabase.Refresh();
         Debug.Log("Imported " + wrapper.items.Length + " items.");
     }
+}
+</file>
+
+<file path="Assets/Scripts/Player/InventoryManager.cs">
+using System;
+using UnityEngine;
+
+/// <summary>
+/// Summary Of File
+/// </summary>
+
+// ToDo:
+// - Add specific logic or initialization here
+public class InventoryManager : MonoBehaviour
+{
+    #region Variables
+
+    // Declare fields, constants, and serialized variables here.
+    [Header("Items")] [SerializeField] private int currCoinAmount;
+    [SerializeField] private IntVariable globalCoinAmount;
+
+    #endregion
+
+    #region Functions
+
+    private void Awake()
+    {
+        Initialize();
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.PickUpCoin += PickupCoin;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.PickUpCoin -= PickupCoin;
+    }
+
+    private void Initialize()
+    {
+        currCoinAmount = globalCoinAmount.getValue();
+    }
+
+    public void PickupCoin(object sender, int amount)
+    {
+        Logger.Log($"Pickup Coin Amount: {amount}");
+        currCoinAmount += amount;
+        globalCoinAmount.setValue(currCoinAmount);
+    }
+
+    #endregion
 }
 </file>
 
@@ -195446,49 +195109,6 @@ public class DebugUIManager : MonoBehaviour
 }
 </file>
 
-<file path="Assets/UI/MyUIManager.cs">
-using UnityEngine;
-using UnityEngine.UIElements;
-
-public class MyUIManager : MonoBehaviour
-{
-    [SerializeField] private UIDocument uiDocument;
-
-    void OnEnable()
-    {
-        // Get the UIDocument component attached to this GameObject
-        uiDocument = GetComponent<UIDocument>();
-
-        // Query the root visual element for a button named "my-button"
-        var PlayGameBtn = uiDocument.rootVisualElement.Q<Button>("PlayGame_Btn");
-        var ExitBtn = uiDocument.rootVisualElement.Q<Button>("Exit_Btn");
-
-        // Register a callback for when the button is clicked
-        if (PlayGameBtn != null)
-        {
-            PlayGameBtn.clicked += PlayGame;
-        }
-
-        if (ExitBtn != null)
-        {
-            ExitBtn.clicked += ExitGame;
-        }
-    }
-
-    private void ExitGame()
-    {
-        Logger.Log("Exit Game");
-        GameEvents.ExitGame?.Invoke(this);
-    }
-
-    private void PlayGame()
-    {
-        Logger.Log("Play Game");
-        GameEvents.LoadScene?.Invoke(this);
-    }
-}
-</file>
-
 <file path="ProjectSettings/PackageManagerSettings.asset">
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
@@ -195539,12 +195159,12 @@ MonoBehaviour:
             {
                 "type": "UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "about.identifier",
-                "value": "{\"m_Value\":{\"m_Major\":6,\"m_Minor\":0,\"m_Patch\":7,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+                "value": "{\"m_Value\":{\"m_Major\":6,\"m_Minor\":0,\"m_Patch\":9,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
             },
             {
                 "type": "UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "preferences.version",
-                "value": "{\"m_Value\":{\"m_Major\":6,\"m_Minor\":0,\"m_Patch\":7,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
+                "value": "{\"m_Value\":{\"m_Major\":6,\"m_Minor\":0,\"m_Patch\":9,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
             },
             {
                 "type": "UnityEngine.ProBuilder.LogLevel, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -196751,8 +196371,8 @@ PlayerSettings:
 </file>
 
 <file path="ProjectSettings/ProjectVersion.txt">
-m_EditorVersion: 6000.2.6f2
-m_EditorVersionWithRevision: 6000.2.6f2 (4a4dcaec6541)
+m_EditorVersion: 6000.4.0f1
+m_EditorVersionWithRevision: 6000.4.0f1 (8cf496087c8f)
 </file>
 
 <file path="ProjectSettings/SceneTemplateSettings.json">
@@ -196881,6 +196501,1217 @@ m_EditorVersionWithRevision: 6000.2.6f2 (4a4dcaec6541)
         "defaultInstantiationMode": 1
     },
     "newSceneOverride": 0
+}
+</file>
+
+<file path="Assets/Scripts/Core/DungeonCreator.cs">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Dungeon Creation Class that creates the dungeon with randomly generated rooms/directions for a unique level each time
+/// </summary>
+/// TODOS:
+/// Fix ending boss room. Still doesnt spawn sometimes. 
+/// Create Spawn points for items in rooms
+/// Update for difficulty with game progression
+public class DungeonCreator : MonoBehaviour
+{
+    #region Variables
+
+    /// <summary>
+    /// 4 directions of a room
+    /// </summary>
+    public enum Direction
+    {
+        North = 0,
+        East = 1,
+        South = 2,
+        West = 3
+    }
+
+    /// <summary>
+    /// Represents a dungeon room in the grid
+    /// </summary>
+    public class Cell
+    {
+        public bool visited;
+        public bool[] status = new bool[4]; // doors: 0=N,1=E,2=S,3=W
+        public bool isStartRoom;
+        public bool isBossRoom;
+    }
+
+    /// <summary>
+    /// set base values for random generation
+    /// </summary>
+    [Header("Dungeon Settings")] public Vector2Int size = new Vector2Int(9, 9); // grid dimensions
+
+    public int mainPathLength = 8; // how long the main path is
+    public int minTotalRooms = 1; // minimum number of rooms 
+    public int totalRooms = 15; // maximum number of rooms
+    [Range(0f, 1f)] public float branchChance = 0.5f; // chance to add branches
+    [Range(0f, 1f)] public float loopChance = 0.3f; // chance to add loops
+
+    [Header("Room Prefab & Positioning")] public GameObject room;
+    public Vector2 offset = new Vector2(12, 12); // spacing between rooms
+
+    private Cell[,] grid;
+    public List<GameObject> rooms;
+    private Vector2Int startPos;
+    public Vector3Variable playerSpawnPoint;
+
+    private int visitedCount = 0;
+
+    public BoolVariable CompleteCheck;
+
+    #endregion
+
+    #region Initialization Functions
+
+    private void OnEnable()
+    {
+        GameEvents.RoomGenerationStart += Initialize;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.RoomGenerationStart -= Initialize;
+    }
+
+    /// <summary>
+    /// Initialize the dungeon Creation
+    /// </summary>
+    public void Initialize(object sender)
+    {
+        GenerateDungeon();
+    }
+
+    private void GenerateDungeon()
+    {
+        // Initialize grid
+        visitedCount = 0; // reset before generation
+        grid = new Cell[size.x, size.y];
+        for (int x = 0; x < size.x; x++)
+        for (int y = 0; y < size.y; y++)
+            grid[x, y] = new Cell();
+        rooms = new List<GameObject>();
+
+        startPos = new Vector2Int(0, 0);
+
+        // 1. Generate main path
+        GenerateMainPath();
+        // 2. Generate branches
+        GenerateBranches();
+        // 3. Add loops for a grid-like network
+        GenerateLoops();
+        // 4. Find and place boss room
+        FinalizeBossRoom();
+        // 5. Instantiate room prefabs into the world
+        InstantiateDungeonFromGrid();
+        // 6. Send Event when dungeon is generated
+        CompleteInit();
+    }
+
+    public void CompleteInit()
+    {
+        CompleteCheck.setValue(true);
+        GameEvents.DungeonGenerationComplete?.Invoke(this);
+    }
+
+    #endregion
+
+    #region Main Functions
+
+    /// <summary>
+    /// Generates the main path from the start position.
+    /// </summary>
+    private void GenerateMainPath()
+    {
+        Vector2Int current = startPos;
+        MarkVisited(current.x, current.y);
+        grid[current.x, current.y].isStartRoom = true;
+
+        for (int i = 1; i < mainPathLength; i++)
+        {
+            List<Direction> validDirs = PickDirection(current);
+            if (validDirs.Count == 0) break;
+
+            Direction dir = validDirs[Random.Range(0, validDirs.Count)];
+            Vector2Int next = GetOffset(current, dir);
+
+            if (HasExtraNeighbors(next, current)) continue;
+
+            // Connect rooms
+            grid[current.x, current.y].status[(int)dir] = true;
+            grid[next.x, next.y].status[(int)Opposite(dir)] = true;
+
+            current = next;
+            MarkVisited(current.x, current.y);
+        }
+    }
+
+    /// <summary>
+    /// Instantiate room prefabs for all visited cells.
+    /// </summary>
+    private void InstantiateDungeonFromGrid()
+    {
+        rooms.Clear();
+        for (int x = 0; x < size.x; x++)
+        {
+            for (int y = 0; y < size.y; y++)
+            {
+                if (!grid[x, y].visited) continue;
+
+                Vector3 position = new Vector3(x * offset.x, 0, y * offset.y);
+                GameObject newRoom = Instantiate(room, position, Quaternion.identity, transform);
+
+                rooms.Add(newRoom);
+                RoomBehavior rb = newRoom.GetComponent<RoomBehavior>();
+                rb.UpdateRoom(grid[x, y].status);
+
+                if (grid[x, y].isStartRoom) rb.SetType(RoomType.Start);
+                else if (grid[x, y].isBossRoom) rb.SetType(RoomType.Boss);
+                else rb.SetType(RoomType.Normal);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Adds random branches from the main path
+    /// until the total room count is reached.
+    /// </summary>
+    private void GenerateBranches()
+    {
+        List<Vector2Int> visitedRooms = new();
+        for (int x = 0; x < size.x; x++)
+        for (int y = 0; y < size.y; y++)
+            if (grid[x, y].visited)
+                visitedRooms.Add(new Vector2Int(x, y));
+
+        foreach (Vector2Int pos in visitedRooms)
+        {
+            foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+            {
+                if (visitedCount >= totalRooms) return;
+
+                // If we're under minTotalRooms, force expansion.
+                // Otherwise, rely on branchChance.
+                if (visitedCount < minTotalRooms || Random.value <= branchChance)
+                {
+                    Vector2Int branch = GetOffset(pos, dir);
+                    if (!IsInBounds(branch.x, branch.y) || grid[branch.x, branch.y].visited) continue;
+                    if (HasExtraNeighbors(branch, pos)) continue;
+
+                    grid[pos.x, pos.y].status[(int)dir] = true;
+                    grid[branch.x, branch.y].status[(int)Opposite(dir)] = true;
+                    grid[branch.x, branch.y].visited = true;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Randomly connects nearby rooms to create loops,
+    /// which prevents the dungeon from being a simple tree.
+    /// </summary>
+    private void GenerateLoops()
+    {
+        for (int x = 0; x < size.x; x++)
+        {
+            for (int y = 0; y < size.y; y++)
+            {
+                if (!grid[x, y].visited) continue;
+
+                foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+                {
+                    Vector2Int neighbor = GetOffset(new Vector2Int(x, y), dir);
+                    if (!IsInBounds(neighbor.x, neighbor.y)) continue;
+                    if (!grid[neighbor.x, neighbor.y].visited) continue;
+
+                    // Already connected?
+                    if (grid[x, y].status[(int)dir]) continue;
+
+                    // Chance to connect
+                    if (Random.value < loopChance)
+                    {
+                        grid[x, y].status[(int)dir] = true;
+                        grid[neighbor.x, neighbor.y].status[(int)Opposite(dir)] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Finds the farthest room from the start,
+    /// and ensures it becomes a dead-end boss room.
+    /// </summary>
+    private void FinalizeBossRoom()
+    {
+        // Step 1: BFS to find farthest room from start
+        Queue<Vector2Int> queue = new Queue<Vector2Int>();
+        Dictionary<Vector2Int, int> dist = new Dictionary<Vector2Int, int>();
+
+        queue.Enqueue(startPos);
+        dist[startPos] = 0;
+
+        Vector2Int farthest = startPos;
+        int maxDist = 0;
+
+        while (queue.Count > 0)
+        {
+            Vector2Int current = queue.Dequeue();
+            int currentDist = dist[current];
+
+            if (currentDist > maxDist)
+            {
+                maxDist = currentDist;
+                farthest = current;
+            }
+
+            for (int d = 0; d < 4; d++)
+            {
+                if (!grid[current.x, current.y].status[d]) continue;
+
+                Vector2Int neighbor = GetOffset(current, (Direction)d);
+                if (!IsInBounds(neighbor.x, neighbor.y)) continue;
+                if (!grid[neighbor.x, neighbor.y].visited) continue;
+
+                if (!dist.ContainsKey(neighbor))
+                {
+                    dist[neighbor] = currentDist + 1;
+                    queue.Enqueue(neighbor);
+                }
+            }
+        }
+
+        // Step 2: ensure farthest is a dead-end
+        int connections = CountConnections(farthest);
+
+        if (connections == 1)
+        {
+            // Already a dead-end
+            grid[farthest.x, farthest.y].isBossRoom = true;
+            return;
+        }
+
+        // Step 3: if possible, add a new room as a boss
+        if (visitedCount < totalRooms)
+        {
+            List<Direction> availableDirs = PickDirection(farthest);
+            if (availableDirs.Count > 0)
+            {
+                Direction dir = availableDirs[Random.Range(0, availableDirs.Count)];
+                Vector2Int newRoomPos = GetOffset(farthest, dir);
+
+                // Create connection to new boss room
+                grid[farthest.x, farthest.y].status[(int)dir] = true;
+                grid[newRoomPos.x, newRoomPos.y].status[(int)Opposite(dir)] = true;
+                grid[newRoomPos.x, newRoomPos.y].visited = true;
+
+                grid[newRoomPos.x, newRoomPos.y].isBossRoom = true;
+                return;
+            }
+        }
+
+        // Step 4: force prune to dead-end if no room can be added
+        PruneToDeadEnd(farthest);
+        grid[farthest.x, farthest.y].isBossRoom = true;
+    }
+
+    #endregion
+
+    #region Helper Functions
+
+    private void MarkVisited(int x, int y)
+    {
+        if (grid[x, y].visited) return; // don't double count
+        grid[x, y].visited = true;
+        visitedCount++;
+    }
+
+    private int CountConnections(Vector2Int pos)
+    {
+        int c = 0;
+        foreach (bool d in grid[pos.x, pos.y].status)
+            if (d)
+                c++;
+        return c;
+    }
+
+    private void PruneToDeadEnd(Vector2Int pos)
+    {
+        // Keep only the first valid connection, remove others
+        bool keptOne = false;
+        for (int d = 0; d < 4; d++)
+        {
+            if (!grid[pos.x, pos.y].status[d]) continue;
+
+            if (!keptOne)
+            {
+                keptOne = true;
+                continue; // keep first connection
+            }
+
+            // remove extra connections
+            grid[pos.x, pos.y].status[d] = false;
+
+            Vector2Int neighbor = GetOffset(pos, (Direction)d);
+            if (IsInBounds(neighbor.x, neighbor.y))
+                grid[neighbor.x, neighbor.y].status[(int)Opposite((Direction)d)] = false;
+        }
+    }
+
+    private bool HasExtraNeighbors(Vector2Int cell, Vector2Int parent)
+    {
+        foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+        {
+            Vector2Int neighbor = GetOffset(cell, dir);
+            if (!IsInBounds(neighbor.x, neighbor.y)) continue;
+            if (grid[neighbor.x, neighbor.y].visited && neighbor != parent) return true;
+        }
+
+        return false;
+    }
+
+    private List<Direction> PickDirection(Vector2Int pos)
+    {
+        List<Direction> dirs = new();
+        foreach (Direction dir in System.Enum.GetValues(typeof(Direction)))
+        {
+            Vector2Int next = GetOffset(pos, dir);
+            if (IsInBounds(next.x, next.y) && !grid[next.x, next.y].visited)
+                dirs.Add(dir);
+        }
+
+        return dirs;
+    }
+
+    private Vector2Int GetOffset(Vector2Int pos, Direction dir)
+    {
+        return dir switch
+        {
+            Direction.North => new Vector2Int(pos.x, pos.y + 1),
+            Direction.East => new Vector2Int(pos.x + 1, pos.y),
+            Direction.South => new Vector2Int(pos.x, pos.y - 1),
+            Direction.West => new Vector2Int(pos.x - 1, pos.y),
+            _ => pos
+        };
+    }
+
+    private Direction Opposite(Direction dir) => (Direction)(((int)dir + 2) % 4);
+
+    private bool IsInBounds(int x, int y) => x >= 0 && y >= 0 && x < size.x && y < size.y;
+
+    #endregion
+
+    #region Misc Functions
+
+    /// <summary>
+    /// Draw cubes in the rooms to visualize room types
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        if (grid == null) return;
+
+        // Scale gizmos relative to room spacing
+        Vector3 gizmoSize = new Vector3(offset.x * 0.6f, 1, offset.y * 0.6f);
+
+        for (int x = 0; x < size.x; x++)
+        {
+            for (int y = 0; y < size.y; y++)
+            {
+                if (!grid[x, y].visited) continue;
+
+                Vector3 pos = new Vector3(x * offset.x, 0.25f, y * offset.y);
+
+                if (grid[x, y].isStartRoom)
+                    Gizmos.color = Color.green;
+                else if (grid[x, y].isBossRoom)
+                    Gizmos.color = Color.red;
+                else
+                    Gizmos.color = Color.blue;
+
+                Gizmos.DrawCube(pos, gizmoSize);
+            }
+        }
+    }
+
+    #endregion
+}
+</file>
+
+<file path="Assets/Scripts/Core/SceneTransition.cs">
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SceneTransition : MonoBehaviour
+{
+    [SerializeField] private GameObject CanavasController;
+
+    private void OnEnable()
+    {
+        GameEvents.StartSceneChange += SceneLoad;
+        GameEvents.LoadScene += LoadNextScene;
+        GameEvents.GenerationsComplete += SetCanvasState;
+        GameEvents.ReloadScene += LoadNextScene;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.StartSceneChange -= SceneLoad;
+        GameEvents.LoadScene -= LoadNextScene;
+        GameEvents.GenerationsComplete -= SetCanvasState;
+        GameEvents.ReloadScene -= LoadNextScene;
+    }
+
+    public void SceneLoad(object sender, GameScenes scene)
+    {
+        Logger.Log($"Scene to change to: {scene}");
+        SceneManager.LoadScene(scene.ToString());
+    }
+
+    public void LoadNextScene(object sender)
+    {
+        Logger.Log("Load Next Scene");
+        GameEvents.SceneTransitionStart?.Invoke(this);
+        //SetCanvasState(true);
+    }
+
+    public void SetCanvasState(object sender, bool state)
+    {
+        CanavasController.SetActive(state);
+    }
+}
+</file>
+
+<file path="Assets/Scripts/Utilities/AudioManager.cs">
+using UnityEngine;
+
+public class AudioManager : MonoBehaviour
+{
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
+
+    public void PlayMusic(AudioClip clip)
+    {
+        musicSource.clip = clip;
+        musicSource.Play();
+    }
+    public void StopMusic(AudioClip clip)
+    {
+        musicSource.clip = clip;
+        musicSource.Stop();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        Logger.Log($"{clip.ToString()}");
+        sfxSource.PlayOneShot(clip);
+    }
+}
+</file>
+
+<file path="Assets/UI Toolkit/PanelSettings.asset">
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: PanelSettings
+  m_EditorClassIdentifier: 
+  themeUss: {fileID: -4733365628477956816, guid: 20ccf8467a832444792c210e29388cde, type: 3}
+  m_DisableNoThemeWarning: 0
+  m_TargetTexture: {fileID: 0}
+  m_RenderMode: 0
+  m_ColliderUpdateMode: 0
+  m_ColliderIsTrigger: 1
+  m_ScaleMode: 2
+  m_ReferenceSpritePixelsPerUnit: 100
+  m_PixelsPerUnit: 100
+  m_Scale: 1
+  m_ReferenceDpi: 96
+  m_FallbackDpi: 96
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_Match: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+  m_BindingLogLevel: 1
+  m_ClearDepthStencil: 1
+  m_ClearColor: 0
+  m_ColorClearValue: {r: 0, g: 0, b: 0, a: 0}
+  m_VertexBudget: 0
+  m_DynamicAtlasSettings:
+    m_MinAtlasSize: 64
+    m_MaxAtlasSize: 4096
+    m_MaxSubTextureSize: 64
+    m_ActiveFilters: -1
+  m_AtlasBlitShader: {fileID: 9101, guid: 0000000000000000f000000000000000, type: 0}
+  m_RuntimeShader: {fileID: 9100, guid: 0000000000000000f000000000000000, type: 0}
+  m_RuntimeWorldShader: {fileID: 9102, guid: 0000000000000000f000000000000000, type: 0}
+  m_SDFShader: {fileID: 19011, guid: 0000000000000000f000000000000000, type: 0}
+  m_BitmapShader: {fileID: 9001, guid: 0000000000000000f000000000000000, type: 0}
+  m_SpriteShader: {fileID: 19012, guid: 0000000000000000f000000000000000, type: 0}
+  m_ICUDataAsset: {fileID: 0}
+  forceGammaRendering: 0
+  textSettings: {fileID: 0}
+</file>
+
+<file path="Assets/UI/MyUIManager.cs">
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class MyUIManager : MonoBehaviour
+{
+    [SerializeField] private UIDocument uiDocument;
+
+    void OnEnable()
+    {
+        // Get the UIDocument component attached to this GameObject
+        uiDocument = GetComponent<UIDocument>();
+
+        // Query the root visual element for a button named "my-button"
+        var PlayGameBtn = uiDocument.rootVisualElement.Q<Button>("PlayGame_Btn");
+        var ExitBtn = uiDocument.rootVisualElement.Q<Button>("Exit_Btn");
+
+        // Register a callback for when the button is clicked
+        if (PlayGameBtn != null)
+        {
+            PlayGameBtn.clicked += PlayGame;
+        }
+
+        if (ExitBtn != null)
+        {
+            ExitBtn.clicked += ExitGame;
+        }
+    }
+
+    private void ExitGame()
+    {
+        Logger.Log("Exit Game");
+        GameEvents.ExitGame?.Invoke(this);
+    }
+
+    private void PlayGame()
+    {
+        Logger.Log("Play Game");
+        GameEvents.LoadScene?.Invoke(this);
+    }
+}
+</file>
+
+<file path="Packages/manifest.json">
+{
+  "dependencies": {
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.ai.navigation": "2.0.11",
+    "com.unity.collab-proxy": "2.11.4",
+    "com.unity.feature.development": "1.0.2",
+    "com.unity.feature.worldbuilding": "1.0.1",
+    "com.unity.inputsystem": "1.19.0",
+    "com.unity.multiplayer.center": "1.0.1",
+    "com.unity.timeline": "1.8.11",
+    "com.unity.ugui": "2.0.0",
+    "com.unity.visualscripting": "1.9.10",
+    "com.unity.modules.accessibility": "1.0.0",
+    "com.unity.modules.adaptiveperformance": "1.0.0",
+    "com.unity.modules.ai": "1.0.0",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.modules.assetbundle": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.cloth": "1.0.0",
+    "com.unity.modules.director": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.screencapture": "1.0.0",
+    "com.unity.modules.terrain": "1.0.0",
+    "com.unity.modules.terrainphysics": "1.0.0",
+    "com.unity.modules.tilemap": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.umbra": "1.0.0",
+    "com.unity.modules.unityanalytics": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
+    "com.unity.modules.unitywebrequestaudio": "1.0.0",
+    "com.unity.modules.unitywebrequesttexture": "1.0.0",
+    "com.unity.modules.unitywebrequestwww": "1.0.0",
+    "com.unity.modules.vectorgraphics": "1.0.0",
+    "com.unity.modules.vehicles": "1.0.0",
+    "com.unity.modules.video": "1.0.0",
+    "com.unity.modules.vr": "1.0.0",
+    "com.unity.modules.wind": "1.0.0",
+    "com.unity.modules.xr": "1.0.0"
+  }
+}
+</file>
+
+<file path="Packages/packages-lock.json">
+{
+  "dependencies": {
+    "com.autodesk.fbx": {
+      "version": "5.1.3",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.ai.navigation": {
+      "version": "2.0.11",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.ai": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.burst": {
+      "version": "1.8.28",
+      "depth": 4,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.collab-proxy": {
+      "version": "2.11.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.collections": {
+      "version": "6.4.0",
+      "depth": 4,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.burst": "1.8.23",
+        "com.unity.mathematics": "1.3.2",
+        "com.unity.nuget.mono-cecil": "1.11.5",
+        "com.unity.test-framework": "1.4.6",
+        "com.unity.test-framework.performance": "3.0.3"
+      }
+    },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ext.nunit": {
+      "version": "2.0.5",
+      "depth": 2,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.feature.development": {
+      "version": "1.0.2",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ide.visualstudio": "2.0.27",
+        "com.unity.ide.rider": "3.0.39",
+        "com.unity.editorcoroutines": "1.0.1",
+        "com.unity.performance.profile-analyzer": "1.3.2",
+        "com.unity.test-framework": "1.6.0",
+        "com.unity.testtools.codecoverage": "1.3.0"
+      }
+    },
+    "com.unity.feature.worldbuilding": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.probuilder": "6.0.9",
+        "com.unity.formats.fbx": "5.1.5",
+        "com.unity.terrain-tools": "5.3.2"
+      }
+    },
+    "com.unity.formats.fbx": {
+      "version": "5.1.5",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.autodesk.fbx": "5.1.1",
+        "com.unity.timeline": "1.7.1"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ide.rider": {
+      "version": "3.0.39",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ide.visualstudio": {
+      "version": "2.0.27",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.33"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.inputsystem": {
+      "version": "1.19.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.mathematics": {
+      "version": "1.3.3",
+      "depth": 4,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.multiplayer.center": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      }
+    },
+    "com.unity.nuget.mono-cecil": {
+      "version": "1.11.6",
+      "depth": 5,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.performance.profile-analyzer": {
+      "version": "1.3.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.probuilder": {
+      "version": "6.0.9",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.shadergraph": "17.0.3",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.settings-manager": "1.0.3"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.render-pipelines.core": {
+      "version": "17.4.0",
+      "depth": 3,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.burst": "1.8.14",
+        "com.unity.mathematics": "1.3.2",
+        "com.unity.ugui": "2.0.0",
+        "com.unity.collections": "2.4.3",
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
+    "com.unity.searcher": {
+      "version": "4.9.4",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "2.1.1",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.shadergraph": {
+      "version": "17.4.0",
+      "depth": 2,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "17.4.0",
+        "com.unity.searcher": "4.9.3"
+      }
+    },
+    "com.unity.terrain-tools": {
+      "version": "5.3.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.modules.terrainphysics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.test-framework": {
+      "version": "1.6.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ext.nunit": "2.0.3",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
+    "com.unity.test-framework.performance": {
+      "version": "3.2.0",
+      "depth": 5,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.33",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.testtools.codecoverage": {
+      "version": "1.3.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.4.5",
+        "com.unity.settings-manager": "2.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.timeline": {
+      "version": "1.8.11",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.director": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ugui": {
+      "version": "2.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.visualscripting": {
+      "version": "1.9.10",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.modules.accessibility": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.adaptiveperformance": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.subsystems": "1.0.0"
+      }
+    },
+    "com.unity.modules.ai": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.androidjni": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.animation": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.assetbundle": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.audio": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.cloth": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      }
+    },
+    "com.unity.modules.director": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.animation": "1.0.0"
+      }
+    },
+    "com.unity.modules.hierarchycore": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.imageconversion": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.imgui": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.jsonserialize": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.particlesystem": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.physics": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.physics2d": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.screencapture": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.imageconversion": "1.0.0"
+      }
+    },
+    "com.unity.modules.subsystems": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
+    "com.unity.modules.terrain": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.terrainphysics": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.terrain": "1.0.0"
+      }
+    },
+    "com.unity.modules.tilemap": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.physics2d": "1.0.0"
+      }
+    },
+    "com.unity.modules.ui": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.uielements": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.hierarchycore": "1.0.0",
+        "com.unity.modules.physics": "1.0.0"
+      }
+    },
+    "com.unity.modules.umbra": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.unityanalytics": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
+    "com.unity.modules.unitywebrequest": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.unitywebrequestassetbundle": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0"
+      }
+    },
+    "com.unity.modules.unitywebrequestaudio": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.audio": "1.0.0"
+      }
+    },
+    "com.unity.modules.unitywebrequesttexture": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0"
+      }
+    },
+    "com.unity.modules.unitywebrequestwww": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
+        "com.unity.modules.unitywebrequestaudio": "1.0.0",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0"
+      }
+    },
+    "com.unity.modules.vectorgraphics": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.modules.vehicles": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      }
+    },
+    "com.unity.modules.video": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0"
+      }
+    },
+    "com.unity.modules.vr": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.xr": "1.0.0"
+      }
+    },
+    "com.unity.modules.wind": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.xr": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.subsystems": "1.0.0"
+      }
+    }
+  }
 }
 </file>
 
@@ -197236,33 +198067,6 @@ public class PlayerMovement : MonoBehaviour
 }
 </file>
 
-<file path="Assets/Scripts/Utilities/AudioManager.cs">
-using UnityEngine;
-
-public class AudioManager : MonoBehaviour
-{
-    public AudioSource musicSource;
-    public AudioSource sfxSource;
-
-    public void PlayMusic(AudioClip clip)
-    {
-        musicSource.clip = clip;
-        musicSource.Play();
-    }
-    public void StopMusic(AudioClip clip)
-    {
-        musicSource.clip = clip;
-        musicSource.Stop();
-    }
-
-    public void PlaySFX(AudioClip clip)
-    {
-        Logger.Log($"{clip.ToString()}");
-        sfxSource.PlayOneShot(clip);
-    }
-}
-</file>
-
 <file path="Assets/Scripts/Utilities/InputManager.cs">
 using System;
 using UnityEngine;
@@ -197283,668 +198087,6 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
     }
-}
-</file>
-
-<file path="Assets/UI Toolkit/PanelSettings.asset">
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: PanelSettings
-  m_EditorClassIdentifier: 
-  themeUss: {fileID: -4733365628477956816, guid: 20ccf8467a832444792c210e29388cde, type: 3}
-  m_DisableNoThemeWarning: 0
-  m_TargetTexture: {fileID: 0}
-  m_RenderMode: 0
-  m_ColliderUpdateMode: 0
-  m_ColliderIsTrigger: 1
-  m_ScaleMode: 2
-  m_ReferenceSpritePixelsPerUnit: 100
-  m_PixelsPerUnit: 100
-  m_Scale: 1
-  m_ReferenceDpi: 96
-  m_FallbackDpi: 96
-  m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
-  m_Match: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
-  m_BindingLogLevel: 1
-  m_ClearDepthStencil: 1
-  m_ClearColor: 0
-  m_ColorClearValue: {r: 0, g: 0, b: 0, a: 0}
-  m_VertexBudget: 0
-  m_DynamicAtlasSettings:
-    m_MinAtlasSize: 64
-    m_MaxAtlasSize: 4096
-    m_MaxSubTextureSize: 64
-    m_ActiveFilters: -1
-  m_AtlasBlitShader: {fileID: 9101, guid: 0000000000000000f000000000000000, type: 0}
-  m_RuntimeShader: {fileID: 9100, guid: 0000000000000000f000000000000000, type: 0}
-  m_RuntimeWorldShader: {fileID: 9102, guid: 0000000000000000f000000000000000, type: 0}
-  m_SDFShader: {fileID: 19011, guid: 0000000000000000f000000000000000, type: 0}
-  m_BitmapShader: {fileID: 9001, guid: 0000000000000000f000000000000000, type: 0}
-  m_SpriteShader: {fileID: 19012, guid: 0000000000000000f000000000000000, type: 0}
-  m_ICUDataAsset: {fileID: 0}
-  forceGammaRendering: 0
-  textSettings: {fileID: 0}
-</file>
-
-<file path="Packages/manifest.json">
-{
-  "dependencies": {
-    "com.unity.2d.sprite": "1.0.0",
-    "com.unity.ai.navigation": "2.0.9",
-    "com.unity.collab-proxy": "2.9.3",
-    "com.unity.feature.development": "1.0.2",
-    "com.unity.feature.worldbuilding": "1.0.1",
-    "com.unity.inputsystem": "1.14.2",
-    "com.unity.multiplayer.center": "1.0.0",
-    "com.unity.timeline": "1.8.9",
-    "com.unity.ugui": "2.0.0",
-    "com.unity.visualscripting": "1.9.8",
-    "com.unity.modules.accessibility": "1.0.0",
-    "com.unity.modules.ai": "1.0.0",
-    "com.unity.modules.androidjni": "1.0.0",
-    "com.unity.modules.animation": "1.0.0",
-    "com.unity.modules.assetbundle": "1.0.0",
-    "com.unity.modules.audio": "1.0.0",
-    "com.unity.modules.cloth": "1.0.0",
-    "com.unity.modules.director": "1.0.0",
-    "com.unity.modules.imageconversion": "1.0.0",
-    "com.unity.modules.imgui": "1.0.0",
-    "com.unity.modules.jsonserialize": "1.0.0",
-    "com.unity.modules.particlesystem": "1.0.0",
-    "com.unity.modules.physics": "1.0.0",
-    "com.unity.modules.physics2d": "1.0.0",
-    "com.unity.modules.screencapture": "1.0.0",
-    "com.unity.modules.terrain": "1.0.0",
-    "com.unity.modules.terrainphysics": "1.0.0",
-    "com.unity.modules.tilemap": "1.0.0",
-    "com.unity.modules.ui": "1.0.0",
-    "com.unity.modules.uielements": "1.0.0",
-    "com.unity.modules.umbra": "1.0.0",
-    "com.unity.modules.unityanalytics": "1.0.0",
-    "com.unity.modules.unitywebrequest": "1.0.0",
-    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
-    "com.unity.modules.unitywebrequestaudio": "1.0.0",
-    "com.unity.modules.unitywebrequesttexture": "1.0.0",
-    "com.unity.modules.unitywebrequestwww": "1.0.0",
-    "com.unity.modules.vehicles": "1.0.0",
-    "com.unity.modules.video": "1.0.0",
-    "com.unity.modules.vr": "1.0.0",
-    "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  }
-}
-</file>
-
-<file path="Packages/packages-lock.json">
-{
-  "dependencies": {
-    "com.autodesk.fbx": {
-      "version": "5.1.1",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.sprite": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.ai.navigation": {
-      "version": "2.0.9",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.ai": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.burst": {
-      "version": "1.8.24",
-      "depth": 4,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.mathematics": "1.2.1",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.collab-proxy": {
-      "version": "2.9.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.collections": {
-      "version": "2.5.7",
-      "depth": 4,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.burst": "1.8.19",
-        "com.unity.mathematics": "1.3.2",
-        "com.unity.test-framework": "1.4.6",
-        "com.unity.nuget.mono-cecil": "1.11.5",
-        "com.unity.test-framework.performance": "3.0.3"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.editorcoroutines": {
-      "version": "1.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ext.nunit": {
-      "version": "2.0.5",
-      "depth": 2,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.feature.development": {
-      "version": "1.0.2",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.ide.visualstudio": "2.0.23",
-        "com.unity.ide.rider": "3.0.37",
-        "com.unity.editorcoroutines": "1.0.0",
-        "com.unity.performance.profile-analyzer": "1.2.3",
-        "com.unity.test-framework": "1.6.0",
-        "com.unity.testtools.codecoverage": "1.2.6"
-      }
-    },
-    "com.unity.feature.worldbuilding": {
-      "version": "1.0.1",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.probuilder": "6.0.7",
-        "com.unity.polybrush": "1.2.0",
-        "com.unity.formats.fbx": "5.1.4",
-        "com.unity.terrain-tools": "5.3.0"
-      }
-    },
-    "com.unity.formats.fbx": {
-      "version": "5.1.4",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.autodesk.fbx": "5.1.1",
-        "com.unity.timeline": "1.7.1"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.rider": {
-      "version": "3.0.37",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ext.nunit": "1.0.6"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.visualstudio": {
-      "version": "2.0.23",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.9"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.inputsystem": {
-      "version": "1.14.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.uielements": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.mathematics": {
-      "version": "1.3.2",
-      "depth": 4,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.multiplayer.center": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.uielements": "1.0.0"
-      }
-    },
-    "com.unity.nuget.mono-cecil": {
-      "version": "1.11.5",
-      "depth": 5,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.performance.profile-analyzer": {
-      "version": "1.2.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.polybrush": {
-      "version": "1.2.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.settings-manager": "2.0.1"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.probuilder": {
-      "version": "6.0.7",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.shadergraph": "17.0.3",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.settings-manager": "1.0.3"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.render-pipelines.core": {
-      "version": "17.2.0",
-      "depth": 3,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.burst": "1.8.14",
-        "com.unity.mathematics": "1.3.2",
-        "com.unity.ugui": "2.0.0",
-        "com.unity.collections": "2.4.3",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.terrain": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.rendering.light-transport": "1.0.1"
-      }
-    },
-    "com.unity.rendering.light-transport": {
-      "version": "1.0.1",
-      "depth": 4,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.collections": "2.2.0",
-        "com.unity.mathematics": "1.2.4",
-        "com.unity.modules.terrain": "1.0.0"
-      }
-    },
-    "com.unity.searcher": {
-      "version": "4.9.3",
-      "depth": 3,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.settings-manager": {
-      "version": "2.1.0",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.shadergraph": {
-      "version": "17.2.0",
-      "depth": 2,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.render-pipelines.core": "17.2.0",
-        "com.unity.searcher": "4.9.3"
-      }
-    },
-    "com.unity.terrain-tools": {
-      "version": "5.3.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.terrain": "1.0.0",
-        "com.unity.modules.terrainphysics": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.test-framework": {
-      "version": "1.6.0",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.ext.nunit": "2.0.3",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      }
-    },
-    "com.unity.test-framework.performance": {
-      "version": "3.1.0",
-      "depth": 5,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.33",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.testtools.codecoverage": {
-      "version": "1.2.6",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.0.16",
-        "com.unity.settings-manager": "1.0.1"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.timeline": {
-      "version": "1.8.9",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.director": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.particlesystem": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ugui": {
-      "version": "2.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0"
-      }
-    },
-    "com.unity.visualscripting": {
-      "version": "1.9.8",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.modules.accessibility": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.ai": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.androidjni": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.animation": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.assetbundle": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.audio": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.cloth": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.physics": "1.0.0"
-      }
-    },
-    "com.unity.modules.director": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.animation": "1.0.0"
-      }
-    },
-    "com.unity.modules.hierarchycore": {
-      "version": "1.0.0",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.imageconversion": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.imgui": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.jsonserialize": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.particlesystem": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.physics": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.physics2d": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.screencapture": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.imageconversion": "1.0.0"
-      }
-    },
-    "com.unity.modules.subsystems": {
-      "version": "1.0.0",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.jsonserialize": "1.0.0"
-      }
-    },
-    "com.unity.modules.terrain": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.terrainphysics": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.terrain": "1.0.0"
-      }
-    },
-    "com.unity.modules.tilemap": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.physics2d": "1.0.0"
-      }
-    },
-    "com.unity.modules.ui": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.uielements": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.hierarchycore": "1.0.0",
-        "com.unity.modules.physics": "1.0.0"
-      }
-    },
-    "com.unity.modules.umbra": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.unityanalytics": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      }
-    },
-    "com.unity.modules.unitywebrequest": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.unitywebrequestassetbundle": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.assetbundle": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0"
-      }
-    },
-    "com.unity.modules.unitywebrequestaudio": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.audio": "1.0.0"
-      }
-    },
-    "com.unity.modules.unitywebrequesttexture": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.imageconversion": "1.0.0"
-      }
-    },
-    "com.unity.modules.unitywebrequestwww": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
-        "com.unity.modules.unitywebrequestaudio": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.assetbundle": "1.0.0",
-        "com.unity.modules.imageconversion": "1.0.0"
-      }
-    },
-    "com.unity.modules.vehicles": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.physics": "1.0.0"
-      }
-    },
-    "com.unity.modules.video": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0"
-      }
-    },
-    "com.unity.modules.vr": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.xr": "1.0.0"
-      }
-    },
-    "com.unity.modules.wind": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.modules.xr": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.subsystems": "1.0.0"
-      }
-    }
-  }
 }
 </file>
 
@@ -198639,15 +198781,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableDebug: 0
   player: {fileID: 5781614363067837226}
-  player_Speed: 3
-  jump_Force: 5
+  player_Speed: 6
+  jump_Force: 7
   ground_Check_List:
   - Ground
   - Object
   ground_Check: {fileID: 5721299873014376030}
   is_grounded: 0
   raycast_Dist: 0.5
-  sprint_Mod_Speed: 2
+  sprint_Mod_Speed: 1.8
   max_Stamina: 10
   stamina_Depletion: 2
   stamina_Regen_Rate: 1
@@ -198655,10 +198797,10 @@ MonoBehaviour:
   reset_Stamina: 0
   player_Height_Pos: {fileID: 1442685130748596580}
   original_Height: 0
-  crouch_Height: 0.5
-  crouch_Speed_Modifier: 0.5
+  crouch_Height: 0.3
+  crouch_Speed_Modifier: 0.4
   crouch_Jump_Modifyer: 0.5
-  crouch_Lerp_Speed: 5
+  crouch_Lerp_Speed: 8
   is_Crouching: 0
 --- !u!114 &5846779977464698808
 MonoBehaviour:
@@ -198672,12 +198814,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e921eea0357e34a8bdda37112ca91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 1.5
-  ySensitivity: 1.5
+  xSensitivity: 0.15
+  ySensitivity: 0.15
   cameraTransform: {fileID: 1320922635735962675}
   player: {fileID: 5781614363067837226}
   enableSmoothing: 1
-  smoothSpeed: 10
+  smoothSpeed: 20
 --- !u!33 &4411471662742547273
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -198741,7 +198883,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623968174630959397}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1648148913233d547af853a25d7b37d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -198812,7 +198954,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &4032850285570012550
 MonoBehaviour:
@@ -199714,6 +199856,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -200043,6 +200186,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -200238,6 +200382,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

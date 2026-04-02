@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3375ac4cef09d0446898e4ca03a2fb44, type: 3}
-  m_Name: 1004_Silver Coin
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 11500000, guid: 9433080f73f0435aaf4e8fd9300c60ba, type: 3}
+  m_Name: Silver_Coin
+  m_EditorClassIdentifier: Assembly-CSharp::CoinDataSO
   Name: Silver Coin
-  ID: 1004
-  Description: Bronze Coin worth 5 piece
+  Description: Silver Coin Pickup
   Renderer: {fileID: 0}
   Value: 5
+  Material: {fileID: 2100000, guid: 1a34d60bf12388b4284c9d5c526e1d98, type: 2}

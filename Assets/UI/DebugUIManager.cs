@@ -8,8 +8,7 @@ public class DebugUIManager : MonoBehaviour
 
     [SerializeField]
     private Label CoinsLbl;
-
-    private int count = 0;
+    
     void OnEnable()
     {
         // Get the UIDocument component attached to this GameObject
@@ -22,8 +21,6 @@ public class DebugUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        count++;
-        CoinsLbl.text = ($"{count}");
     }
 
 }

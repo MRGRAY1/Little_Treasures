@@ -13,8 +13,7 @@ public class RoomBehavior : MonoBehaviour
     private GameObject spawnPoint;
     public GameObject publicSpawnPoint { get; private set; }
 
-    [SerializeField]
-    private RoomType room_Type;
+    public RoomType room_Type;
 
     private void Awake()
     {

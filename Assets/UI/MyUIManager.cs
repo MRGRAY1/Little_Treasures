@@ -3,14 +3,7 @@ using UnityEngine.UIElements;
 
 public class MyUIManager : MonoBehaviour
 {
-    [SerializeField]
-    private UIDocument uiDocument;
-
-    [SerializeField]
-    private EventIndex LoadSceneEvent;
-
-    [SerializeField]
-    private EventIndex ExitGameEvent;
+    [SerializeField] private UIDocument uiDocument;
 
     void OnEnable()
     {
@@ -26,6 +19,7 @@ public class MyUIManager : MonoBehaviour
         {
             PlayGameBtn.clicked += PlayGame;
         }
+
         if (ExitBtn != null)
         {
             ExitBtn.clicked += ExitGame;
@@ -35,12 +29,12 @@ public class MyUIManager : MonoBehaviour
     private void ExitGame()
     {
         Logger.Log("Exit Game");
-        EventBus.Publish(ExitGameEvent);
+        GameEvents.ExitGame?.Invoke(this);
     }
 
     private void PlayGame()
     {
         Logger.Log("Play Game");
-        EventBus.Publish(LoadSceneEvent);
+        GameEvents.LoadScene?.Invoke(this);
     }
 }

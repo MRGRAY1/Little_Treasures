@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8918045790138734310}
+  - component: {fileID: 5781614363067837226}
   - component: {fileID: 8166315328392786938}
   - component: {fileID: 5846779977464698808}
   - component: {fileID: 4411471662742547273}
@@ -16,6 +17,8 @@ GameObject:
   - component: {fileID: 4660869197406630504}
   - component: {fileID: 7672319194111337515}
   - component: {fileID: 1594041766632999390}
+  - component: {fileID: 4032850285570012550}
+  - component: {fileID: 7036062174411156428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -40,6 +43,24 @@ Transform:
   - {fileID: 1442685130748596580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5781614363067837226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623968174630959397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494597a7e22ebd045a27d0fafe213eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  movement: {fileID: 8166315328392786938}
+  input: {fileID: 4032850285570012550}
+  mouseLook: {fileID: 5846779977464698808}
+  player_ID: 0
+  player_Name: 
+  player_SO: {fileID: 11400000, guid: 38f414eea9769bb4080eb82b0b113c03, type: 2}
 --- !u!114 &8166315328392786938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,19 +74,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableDebug: 0
-  player_Speed: 5
-  inputManager: {fileID: 0}
-  player_ID: 0
-  player_Name: 
-  player_SO: {fileID: 11400000, guid: 38f414eea9769bb4080eb82b0b113c03, type: 2}
-  jump_Force: 5
+  player: {fileID: 5781614363067837226}
+  player_Speed: 6
+  jump_Force: 7
   ground_Check_List:
   - Ground
   - Object
   ground_Check: {fileID: 5721299873014376030}
   is_grounded: 0
   raycast_Dist: 0.5
-  sprint_Mod_Speed: 2
+  sprint_Mod_Speed: 1.8
   max_Stamina: 10
   stamina_Depletion: 2
   stamina_Regen_Rate: 1
@@ -73,10 +91,10 @@ MonoBehaviour:
   reset_Stamina: 0
   player_Height_Pos: {fileID: 1442685130748596580}
   original_Height: 0
-  crouch_Height: 0.5
-  crouch_Speed_Modifier: 0.5
+  crouch_Height: 0.3
+  crouch_Speed_Modifier: 0.4
   crouch_Jump_Modifyer: 0.5
-  crouch_Lerp_Speed: 5
+  crouch_Lerp_Speed: 8
   is_Crouching: 0
 --- !u!114 &5846779977464698808
 MonoBehaviour:
@@ -90,11 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e921eea0357e34a8bdda37112ca91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 1.5
-  ySensitivity: 1.5
+  xSensitivity: 0.15
+  ySensitivity: 0.15
   cameraTransform: {fileID: 1320922635735962675}
+  player: {fileID: 5781614363067837226}
   enableSmoothing: 1
-  smoothSpeed: 10
+  smoothSpeed: 20
 --- !u!33 &4411471662742547273
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -150,6 +169,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &4660869197406630504
 CapsuleCollider:
@@ -158,7 +178,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623968174630959397}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1648148913233d547af853a25d7b37d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -229,8 +249,35 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &4032850285570012550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623968174630959397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b827490570428caa876ce8da3106c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerInput
+  player: {fileID: 5781614363067837226}
+--- !u!114 &7036062174411156428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623968174630959397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffd1c315324cc943a20e8f085e19cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  currCoinAmount: 0
+  globalCoinAmount: {fileID: 0}
 --- !u!1 &921856065985402693
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +366,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5085448729524656413
 GameObject:

@@ -1,0 +1,26 @@
+{
+  "output": {
+    "style": "xml",
+    "filePath": "repomix-output.xml"
+  },
+  "ignore": {
+    "useGitignore": true,
+    "customPatterns": [
+      "Library/**",
+      "Temp/**",
+      "obj/**",
+      "Logs/**",
+      "*.meta",
+      "*.fbx",
+      "*.png",
+      "*.jpg",
+      "*.wav",
+      "*.mp3",
+      "*.asset",
+      "*.unity",
+      "*.prefab",
+      "*.mat",
+      "*.shader"
+    ]
+  }
+}

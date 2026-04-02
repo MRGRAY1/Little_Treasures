@@ -11,11 +11,8 @@ using UnityEngine.XR;
 /// </summary>
 public class RoomGenerationStart : MonoBehaviour
 {
-    [SerializeField]
-    private EventIndex roomGenStart;
-
     private void Start()
     {
-        EventBus.Publish(roomGenStart);
+        GameEvents.RoomGenerationStart?.Invoke(this);
     }
 }

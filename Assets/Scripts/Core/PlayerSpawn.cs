@@ -1,21 +1,28 @@
+using System;
 using UnityEngine;
 
-public class PlayerSpawn : InitializeItem
+public class PlayerSpawn : MonoBehaviour
 {
-    [Header("Player Settings")]
-    [SerializeField] private GameObject playerPrefab; // Assign in Inspector
+    [Header("Player Settings")] [SerializeField]
+    private GameObject playerPrefab; // Assign in Inspector
+
     [SerializeField] private Vector3Variable spawnPoint;
 
     public GameObject CurrentPlayer { get; private set; }
     public bool PlayerReady { get; private set; }
+    public BoolVariable CompleteCheck;
 
-    public override void Initialize()
+    private void OnEnable()
     {
-        base.Initialize();
-        SpawnPlayer();
+        GameEvents.DungeonGenerationComplete += SpawnPlayer;
     }
 
-    private void SpawnPlayer()
+    private void OnDisable()
+    {
+        GameEvents.DungeonGenerationComplete -= SpawnPlayer;
+    }
+
+    private void SpawnPlayer(object sender)
     {
         if (spawnPoint == null)
         {
@@ -51,8 +58,9 @@ public class PlayerSpawn : InitializeItem
         CompleteInit();
     }
 
-    public override void CompleteInit()
+    public void CompleteInit()
     {
-        base.CompleteInit();
+        CompleteCheck.setValue(true);
+        GameEvents.PlayerSpawnComplete?.Invoke(CurrentPlayer);
     }
 }

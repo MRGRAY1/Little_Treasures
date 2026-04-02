@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class CoinPickUpBehavior : PickUpItem
 {
-    private EventIndex pickUpEvent = EventIndex.PickUpCoin;
+    [SerializeField] private CoinDataSO _coinData;
+
     protected override void HandlePickup(GameObject player)
     {
-        EventBus.Publish(pickUpEvent, itemData.Value);
+        player.GetComponent<InventoryManager>().PickupCoin(_coinData.Value);
+    }
+
+    protected override void Initialize()
+    {
+        _meshRenderer.material = _coinData.Material;
     }
 }

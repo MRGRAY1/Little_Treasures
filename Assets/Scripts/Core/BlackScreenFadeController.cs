@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,9 +6,7 @@ public class BlackScreenFadeController : MonoBehaviour
 {
     [SerializeField] private Animator blackScreenAnimator;
     [SerializeField] private StringVariable AnimationBoolName;
-
-    [SerializeField] private EventIndex StartSceneChange;
-    [SerializeField] private EventIndex SceneReadyEvent;
+    [SerializeField] private GameScenes nextScene;
 
     private bool fadingOut;
 
@@ -16,14 +15,26 @@ public class BlackScreenFadeController : MonoBehaviour
         blackScreenAnimator = GetComponent<Animator>();
     }
 
-    public void FadeIn()
+    private void OnEnable()
+    {
+        GameEvents.StartFadeIn += FadeIn;
+        GameEvents.SceneTransitionStart += FadeOut;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.StartFadeIn -= FadeIn;
+        GameEvents.SceneTransitionStart -= FadeOut;
+    }
+
+    public void FadeIn(object sender)
     {
         fadingOut = false;
         PlayAnimation(1);
         StartCoroutine(WaitForAnimation("FadeIn"));
     }
 
-    public void FadeOut()
+    public void FadeOut(object sender)
     {
         fadingOut = true;
         PlayAnimation(2);
@@ -49,12 +60,12 @@ public class BlackScreenFadeController : MonoBehaviour
         if (fadingOut && animName == "FadeOut")
         {
             Logger.Log("FadeOut");
-            EventBus.Publish(StartSceneChange);
+            GameEvents.StartSceneChange?.Invoke(this, nextScene);
         }
         else if (!fadingOut && animName == "FadeIn")
         {
             Logger.Log("FadeIn");
-            EventBus.Publish(SceneReadyEvent);
+            GameEvents.SceneReady?.Invoke(this);
         }
     }
 }

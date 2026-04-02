@@ -10,24 +10,27 @@ using UnityEngine;
 // - Add specific logic or initialization here
 public abstract class PickUpItem : MonoBehaviour
 {
-    #region Variables
-    // Declare fields, constants, and serialized variables here.
-    [SerializeField]
-    public ItemDataSO itemData;
-    #endregion
+    public MeshRenderer _meshRenderer;
 
     #region Functions
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             HandlePickup(other.gameObject);
             Logger.Log($"Player Pickup: {this.name}");
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
+    protected virtual void Awake()
+    {
+        Initialize();
+    }
+
     protected abstract void HandlePickup(GameObject player);
+    protected abstract void Initialize();
 
     #endregion
 }

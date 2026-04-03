@@ -1,0 +1,22 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/GameHud.uss?fileID=7433441132597879392&amp;guid=43f2e143ce9547c4ca7e6524cc9b3171&amp;type=3#GameHud"/>
+    <ui:VisualElement name="GemsContainer" picking-mode="Ignore" style="flex-grow: 1; position: absolute; top: 50px; left: 40px;">
+        <ui:VisualElement name="Red_Gem_Container" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; height: auto; min-height: 6px;">
+            <ui:Image source="project://database/Assets/Coins.png?fileID=2800000&amp;guid=50bacfbb547d1c44c964a67363eb1419&amp;type=3#Coins" picking-mode="Ignore" name="Gem_Image" tint-color="rgb(221, 39, 39)" style="height: 67px; width: 89px;"/>
+            <ui:Label text="Label" name="Gem_Lbl" picking-mode="Ignore" class="label"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Blue_Gem_Container" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; height: auto; min-height: 6px;">
+            <ui:Image source="project://database/Assets/Coins.png?fileID=2800000&amp;guid=50bacfbb547d1c44c964a67363eb1419&amp;type=3#Coins" picking-mode="Ignore" name="Gem_Image" tint-color="rgb(31, 39, 209)" style="height: 67px; width: 89px;"/>
+            <ui:Label text="Label" name="Gem_Lbl" picking-mode="Ignore" class="label" style="font-size: 39px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Green_Gem_Container" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; height: auto; min-height: 6px;">
+            <ui:Image source="project://database/Assets/Coins.png?fileID=2800000&amp;guid=50bacfbb547d1c44c964a67363eb1419&amp;type=3#Coins" picking-mode="Ignore" name="Gem_Image" tint-color="rgb(17, 188, 15)" style="height: 67px; width: 89px;"/>
+            <ui:Label text="Label" name="Gem_Lbl" picking-mode="Ignore" class="label" style="font-size: 39px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Coins_Container" picking-mode="Ignore" style="flex-grow: 1; position: absolute; top: 50px; left: auto; flex-direction: row-reverse; right: 40px;">
+        <ui:Image source="project://database/Assets/Coins.png?fileID=2800000&amp;guid=50bacfbb547d1c44c964a67363eb1419&amp;type=3#Coins" picking-mode="Ignore" name="Coins_Image" tint-color="rgb(221, 164, 39)" style="height: 67px; width: 89px;"/>
+        <ui:Label text="Label" name="Coins_Lbl" picking-mode="Ignore" class="label" style="font-size: 39px;"/>
+    </ui:VisualElement>
+    <ui:ProgressBar value="22" title="" name="HealthBar" style="width: 502px; position: absolute; top: 26px; left: 719px; height: 64px;"/>
+</ui:UXML>
